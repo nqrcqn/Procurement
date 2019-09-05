@@ -12,7 +12,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
             this.keyword = keyword;
         }
 
-        public bool Applicable(POEApi.Model.Item item)
+        public bool Applicable(Item item)
         {
             Gear gear = item as Gear;
             if (gear == null)
@@ -30,6 +30,11 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
             if (gear.Craftedmods != null)
                 foreach (var mod in gear.Craftedmods)
+                    if (mod.Contains(keyword))
+                        return true;
+
+            if (gear.Enchantmods != null)
+                foreach (var mod in gear.Enchantmods)
                     if (mod.Contains(keyword))
                         return true;
 
