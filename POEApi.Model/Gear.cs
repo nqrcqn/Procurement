@@ -23,6 +23,7 @@ namespace POEApi.Model
             Explicitmods = item.ExplicitMods;
             SocketedItems = GetSocketedItems(item);
             Implicitmods = item.ImplicitMods;
+            Craftedmods = item.CraftedMods;
             Requirements = ProxyMapper.GetRequirements(item.Requirements);
             ItemType = Model.ItemType.Gear;
             GearType = GearTypeFactory.GetType(this);
