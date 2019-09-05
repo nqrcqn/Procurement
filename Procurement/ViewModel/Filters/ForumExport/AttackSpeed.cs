@@ -1,6 +1,6 @@
 ﻿namespace Procurement.ViewModel.Filters.ForumExport
 {
-    internal class AttackSpeed : StatFilter
+    internal class AttackSpeed : OrStatFilter
     {
         public override FilterGroup Group
         {
