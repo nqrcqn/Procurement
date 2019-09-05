@@ -181,7 +181,7 @@
     <Compile Include="Utility\StashHelper.cs" />
     <Compile Include="Utility\VersionChecker.cs" />
     <Compile Include="ViewModel\AdvancedSearchCategory.cs" />
-    <Compile Include="ViewModel\Filters\ForumExport\AccurayFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\AccuracyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CraftedModFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurrencyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\DamageChaos.cs" />
