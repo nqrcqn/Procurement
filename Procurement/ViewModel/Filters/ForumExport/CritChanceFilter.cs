@@ -18,7 +18,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
         public override string Keyword
         {
-            get { return "Crit Chance"; }
+            get { return "Critical Strike Chance"; }
         }
 
         public override string Help
