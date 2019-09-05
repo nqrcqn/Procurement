@@ -14,18 +14,18 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
         public bool Applicable(Item item)
         {
-            if ((item.Explicitmods == null && item.Fracturedmods == null && item.Craftedmods == null) || !(item is Gear))
+            if ((item.Explicitmods == null && item.FracturedMods == null && item.CraftedMods == null) || !(item is Gear))
                 return false;
 
             foreach (var mod in item.Explicitmods)
                 if (mod.Contains(keyword))
                     return true;
 
-            foreach (var mod in item.Fracturedmods)
+            foreach (var mod in item.FracturedMods)
                 if (mod.Contains(keyword))
                     return true;
 
-            foreach (var mod in item.Craftedmods)
+            foreach (var mod in item.CraftedMods)
                 if (mod.Contains(keyword))
                     return true;
 
