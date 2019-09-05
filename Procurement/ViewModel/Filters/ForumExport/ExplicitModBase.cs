@@ -12,7 +12,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
             this.keyword = keyword;
         }
 
-        public bool Applicable(Item item)
+        public bool Applicable(POEApi.Model.Item item)
         {
             if ((item.Explicitmods == null && item.FracturedMods == null && item.CraftedMods == null) || !(item is Gear))
                 return false;
