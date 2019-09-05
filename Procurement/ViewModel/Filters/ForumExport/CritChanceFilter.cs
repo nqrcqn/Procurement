@@ -8,7 +8,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
     public class CritChanceFilter : ExplicitModBase
     {
         public CritChanceFilter()
-            : base("increased Critical Strike Chance")
+            : base("Critical Strike Chance")
         { }
 
         public override bool CanFormCategory
