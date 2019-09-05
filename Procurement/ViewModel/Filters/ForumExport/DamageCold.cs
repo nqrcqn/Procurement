@@ -8,7 +8,7 @@
         }
 
         public DamageCold()
-            : base("Adds Cold Damage", "Adds Cold Damage", "Adds \\d+ to \\d+ Cold Damage", "as Extra Cold Damage", "as Extra Damage of each Element")
+            : base("Adds Cold Damage", "Adds Cold Damage", "Adds \\d+ to \\d+ Cold Damage", "as Extra Cold Damage", "as Extra Damage of each Element", "as Extra Damage of a random Element")
         { }
     }
 }
