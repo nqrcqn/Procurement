@@ -8,7 +8,7 @@
         }
 
         public AttackSpeed()
-            : base("Increased Attack Speed", "Increased Attack Speed", "Increased Attack Speed")
+            : base("Increased Attack Speed", "Increased Attack Speed", "increased Attack Speed", "increased Attack and Cast Speed", "increased Attack, Cast and Movement Speed")
         { }
     }
 }
