@@ -23,7 +23,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
         public override string Help
         {
-            get { return "Items with increased Critical Strike Multiplier"; }
+            get { return "Items with additional Critical Strike Multiplier"; }
         }
 
         public override FilterGroup Group
