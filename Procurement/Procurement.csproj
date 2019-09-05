@@ -181,7 +181,7 @@
     <Compile Include="Utility\StashHelper.cs" />
     <Compile Include="Utility\VersionChecker.cs" />
     <Compile Include="ViewModel\AdvancedSearchCategory.cs" />
-    <Compile Include="ViewModel\Filters\ForumExport\AccurayFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\AccuracyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CraftedModFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurrencyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\DamageChaos.cs" />
@@ -266,6 +266,7 @@
     <Compile Include="ViewModel\Filters\ForumExport\ColdResistance.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CorruptedGemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CritChanceFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\CritMultiplierFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\GlobalCritMultiplierFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurseGemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\DamageCold.cs" />
