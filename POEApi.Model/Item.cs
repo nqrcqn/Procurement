@@ -44,14 +44,17 @@ namespace POEApi.Model
         public string InventoryId { get; set; }
         public string SecDescrText { get; private set; }
         public List<string> Explicitmods { get; set; }
+        public List<string> Implicitmods { get; set; }
         public ItemType ItemType { get; set; }
         public List<Property> Properties { get; set; }
+        public List<Requirement> Requirements { get; set; }
         public bool IsQuality { get; private set; }
         public int Quality { get; private set; }
         public bool Corrupted { get; private set; }
         public List<string> Microtransactions { get; set; }
         public List<String> EnchantMods { get; set; }
         public List<string> FlavourText { get; set; }
+        public string ProphecyText { get; set; }
 
         public List<string> CraftedMods { get; set; }
         public List<string> VeiledMods { get; set; }
@@ -96,6 +99,7 @@ namespace POEApi.Model
             InventoryId = item.InventoryId;
             SecDescrText = item.SecDescrText;
             Explicitmods = item.ExplicitMods;
+            Implicitmods = item.ImplicitMods;
             ItemType = Model.ItemType.UnSet;
             CraftedMods = item.CraftedMods ?? new List<string>();
             VeiledMods = item.VeiledMods ?? new List<string>();
@@ -110,6 +114,9 @@ namespace POEApi.Model
             StackSize = item.StackSize;
             MaxStackSize = item.MaxStackSize;
             IncubatedDetails = item.IncubatedItem;
+            
+            if (item.Requirements != null)
+                Requirements = ProxyMapper.GetRequirements(item.Requirements);
 
             if (item.Properties != null)
             {
