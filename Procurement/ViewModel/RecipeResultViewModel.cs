@@ -68,8 +68,6 @@ namespace Procurement.ViewModel
             Results = manager.Run(itemsByTab);
             if (Results.Count > 0)
                 SelectedItem = Results.Values.First().First().MatchedItems[0];
-
-            ItemFilterUpdater.UpdateLootFilters();
         }
 
         void ApplicationState_LeagueChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
