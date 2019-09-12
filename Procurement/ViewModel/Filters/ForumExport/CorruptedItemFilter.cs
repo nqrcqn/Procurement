@@ -2,7 +2,7 @@
 
 namespace Procurement.ViewModel.Filters.ForumExport
 {
-    public class FullBestiaryOrbFilter : IFilter
+    public class CorruptedItemFilter : IFilter
     {
         public bool CanFormCategory
         {
@@ -16,7 +16,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
         {
             get
             {
-                return "Captured Beasts";
+                return "Corrupted Items";
             }
         }
 
@@ -24,7 +24,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
         {
             get
             {
-                return "All Bestiary Orbs Containing Beasts";
+                return "Corrupted Items";
             }
         }
 
@@ -38,7 +38,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
         public bool Applicable(Item item)
         {
-            return item is FullBestiaryOrb;
+            return item.Corrupted;
         }
     }
 }

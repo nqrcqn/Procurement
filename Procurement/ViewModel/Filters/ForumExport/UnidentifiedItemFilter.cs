@@ -2,7 +2,7 @@
 
 namespace Procurement.ViewModel.Filters.ForumExport
 {
-    public class FullBestiaryOrbFilter : IFilter
+    public class UnidentifiedItemFilter : IFilter
     {
         public bool CanFormCategory
         {
@@ -16,7 +16,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
         {
             get
             {
-                return "Captured Beasts";
+                return "Unidentified Items";
             }
         }
 
@@ -24,7 +24,7 @@ namespace Procurement.ViewModel.Filters.ForumExport
         {
             get
             {
-                return "All Bestiary Orbs Containing Beasts";
+                return "Unidentified Items";
             }
         }
 
@@ -38,7 +38,8 @@ namespace Procurement.ViewModel.Filters.ForumExport
 
         public bool Applicable(Item item)
         {
-            return item is FullBestiaryOrb;
+            // Item types that can't be unidentified always have identified value as true so a simple check is sufficient
+            return !item.Identified;
         }
     }
 }

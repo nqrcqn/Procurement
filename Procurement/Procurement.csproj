@@ -61,7 +61,6 @@
     <ApplicationIcon>Images\Procurement.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Google.Protobuf, Version=3.8.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -118,7 +117,6 @@
     <Compile Include="ViewModel\Filters\ForumExport\ResonatorFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SynthesisedItemFilter.cs" />
     <Compile Include="ViewModel\ForumExportVisitors\SimpleVisitor.cs" />
-    <Compile Include="ViewModel\ItemFilterUpdater.cs" />
     <Compile Include="ViewModel\Recipes\LoreweaveRecipe.cs" />
     <Compile Include="ViewModel\Recipes\VaalOrbRecipe.cs" />
     <Compile Include="ViewModel\TabViewModel\FragmentStashViewModel.cs" />
@@ -181,7 +179,7 @@
     <Compile Include="Utility\StashHelper.cs" />
     <Compile Include="Utility\VersionChecker.cs" />
     <Compile Include="ViewModel\AdvancedSearchCategory.cs" />
-    <Compile Include="ViewModel\Filters\ForumExport\AccurayFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\AccuracyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CraftedModFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurrencyFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\DamageChaos.cs" />
@@ -196,6 +194,7 @@
     <Compile Include="ViewModel\Filters\ForumExport\FullBestiaryOrbFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\GearSearchFilters.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\GemLevelFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\IdentifiedItemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\IncreasedDamageFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\IncursionVialsFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\LeagestoneFilter.cs" />
@@ -214,6 +213,9 @@
     <Compile Include="ViewModel\Filters\ForumExport\SixLink.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SixRedSockets.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SocketColourFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\CorruptedItemFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\UncorruptedItemFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\UnidentifiedItemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\UnknownItemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\ScarabFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\VeiledModFilter.cs" />
@@ -236,6 +238,8 @@
     <Compile Include="ViewModel\DisplayModeStrategy\StringFormatStrategy.cs" />
     <Compile Include="ViewModel\DisplayModeStrategy\ValuesPlusNameStrategy.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\EnergyShieldFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\ArmourFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\EvasionFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\IncreasedPhysicalDamageFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\ManaFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\ManaRegenFilter.cs" />
@@ -268,6 +272,7 @@
     <Compile Include="ViewModel\Filters\ForumExport\ColdResistance.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CorruptedGemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CritChanceFilter.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\CritMultiplierFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\GlobalCritMultiplierFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CurseGemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\DamageCold.cs" />

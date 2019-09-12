@@ -162,13 +162,11 @@ namespace Procurement.ViewModel
         public ICommand RefreshCommand => new RelayCommand(x =>
         {
             ScreenController.Instance.LoadRefreshView();
-            ScreenController.Instance.InvalidateRecipeScreen();
         });
 
         public ICommand RefreshUsedCommand => new RelayCommand(x =>
         {
             ScreenController.Instance.LoadRefreshViewUsed();
-            ScreenController.Instance.InvalidateRecipeScreen();
         });
 
         public static DateTime LastAutomaticRefresh { get; protected set; }
@@ -191,7 +189,6 @@ namespace Procurement.ViewModel
                         if (ScreenController.Instance.ButtonsVisible)
                         {
                             ScreenController.Instance.LoadRefreshViewUsed();
-                            ScreenController.Instance.InvalidateRecipeScreen();
                         }
                     }));
             }
@@ -218,6 +215,8 @@ namespace Procurement.ViewModel
             else
                 configuredOrbType = (OrbType)Enum.Parse(typeof(OrbType), currencyDistributionMetric);
 
+            ApplicationState.Model.StashLoading += ApplicationState_StashLoading;
+
             if (Settings.UserSettings.Keys.Contains(_enableTabRefreshOnLocationChangedConfigName))
             {
                 var enabled = false;
@@ -226,6 +225,23 @@ namespace Procurement.ViewModel
                 {
                     ClientLogFileWatcher.ClientLogFileChanged -= OnClientLogFileChanged;
                     ClientLogFileWatcher.ClientLogFileChanged += OnClientLogFileChanged;
+                }
+            }
+        }
+
+        private void ApplicationState_StashLoading(POEModel sender, POEApi.Model.Events.StashLoadedEventArgs e)
+        {
+            if (e.State != POEApi.Model.Events.POEEventState.AfterEvent)
+                return;
+
+            foreach (var tabAndContent in tabsAndContent)
+            {
+                if (tabAndContent.Index == e.StashID && tabAndContent.Stash is AbstractStashTabControl)
+                {
+                    // This tab has been refreshed.  We mark it as not ready, so it is refreshed the next time it is
+                    // selected.
+                    (tabAndContent.Stash as AbstractStashTabControl).Ready = false;
+                    break;
                 }
             }
         }
@@ -272,7 +288,6 @@ namespace Procurement.ViewModel
             var item = stashView.tabControl.SelectedItem as TabItem;
             selectedTab = item;
             Image i = item.Header as Image;
-            CroppedBitmap bm = (CroppedBitmap)i.Source;
             Tab tab = (Tab)i.Tag;
             item.Header = StashHelper.GenerateTabImage(tab, true);
         }
@@ -286,6 +301,8 @@ namespace Procurement.ViewModel
 
         void ApplicationState_LeagueChanged(object sender, PropertyChangedEventArgs e)
         {
+            tabsAndContent.Clear();
+
             getAvailableItems();
             stashView.tabControl.SelectionChanged -= new SelectionChangedEventHandler(tabControl_SelectionChanged);
             stashView.tabControl.Items.Clear();
@@ -359,9 +376,9 @@ namespace Procurement.ViewModel
 
         void stashView_Loaded(object sender, RoutedEventArgs e)
         {
+            var stash = ApplicationState.Stash[ApplicationState.CurrentLeague];
             for (var i = 1; i <= ApplicationState.Stash[ApplicationState.CurrentLeague].NumberOfTabs; i++)
             {
-                var stash = ApplicationState.Stash[ApplicationState.CurrentLeague];
                 var currentTab = stash.Tabs[i - 1];
 
                 var item = new TabItem
