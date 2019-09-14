@@ -28,12 +28,13 @@
 
         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="185" />
-                <ColumnDefinition Width="185" />
+                <ColumnDefinition Width="175" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="175" />
             </Grid.ColumnDefinitions>
 
-            <Button Content="Save" Grid.Column="0" Height="25" Width="150" Click="Save_Clicked" HorizontalAlignment="Center" />
-            <Button Content="Cancel" Grid.Column="1" Height="25" Width="150" Click="Cancel_Click" HorizontalAlignment="Center" />
+            <Button Content="Save" Grid.Column="0" Height="25" Width="150" Click="Save_Clicked" HorizontalAlignment="Right" />
+            <Button Content="Cancel" Grid.Column="2" Height="25" Width="150" Click="Cancel_Click" HorizontalAlignment="Left" />
 
             </Grid>
     </Grid>
