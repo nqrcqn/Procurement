@@ -67,5 +67,30 @@ namespace POEApi.Model
                 return components;
             }
         }
+
+        private string GetSpecialItemType()
+        {
+            if (Elder)
+            {
+                return "Elder Item";
+            }
+
+            if (Shaper)
+            {
+                return "Shaper Item";
+            }
+
+            if (Fractured)
+            {
+                return "Fractured Item";
+            }
+
+            if (Synthesised)
+            {
+                return "Synthesised Item";
+            }
+
+            return null;
+        }
     }
 }
