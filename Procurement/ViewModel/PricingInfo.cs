@@ -100,8 +100,10 @@ namespace Procurement.ViewModel
                 return string.Empty;
 
             string abbreviation = CurrencyAbbreviationMap.Instance.FromCurrency(orb);
+
             if (string.IsNullOrEmpty(abbreviation))
                 return $"{value} {orb}";
+
             return $"{value} {abbreviation}";
         }
     }
