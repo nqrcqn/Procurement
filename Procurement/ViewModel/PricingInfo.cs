@@ -87,6 +87,9 @@ namespace Procurement.ViewModel
             var valueOrbPair = info.Split(' ');
             value = valueOrbPair[0];
             orb = CurrencyAbbreviationMap.Instance.FromAbbreviation(valueOrbPair[1]);
+            
+            if (string.IsNullOrEmpty(orb))
+                orb = valueOrbPair[1];
 
             enabled = value != string.Empty;
         }
@@ -95,6 +98,9 @@ namespace Procurement.ViewModel
         {
             if (!enabled || (string.IsNullOrEmpty(value) && string.IsNullOrEmpty(orb)))
                 return string.Empty;
+
+            if (string.IsNullOrEmpty(CurrencyAbbreviationMap.Instance.FromCurrency(orb)))
+                return $"{value} {orb}";
 
             return $"{value} {CurrencyAbbreviationMap.Instance.FromCurrency(orb)}";
         }
