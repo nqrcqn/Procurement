@@ -17,9 +17,9 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="95" />
+            <ColumnDefinition Width="170" />
         </Grid.ColumnDefinitions>
 
         <!--Buyouts-->
@@ -65,7 +65,7 @@
                 <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="110" />
                 <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="110" />
             </Grid.ColumnDefinitions>
 
             <Button Content="Save" Grid.Column="0" Height="25" Width="110" Click="Save_Clicked"/>
