@@ -41,20 +41,20 @@ namespace POEApi.Infrastructure
 
         public string FromAbbreviation(string abbreviation)
         {
-            obj item;
-            if (!_abbreviationToCurrency.TryGetValue(abbreviation, out item))
+            string currency;
+            if (!_abbreviationToCurrency.TryGetValue(abbreviation, out currency))
                 return string.Empty;
             
-            return item;
+            return currency;
         }
 
         public string FromCurrency(string currency)
         {
-            obj item;
-            if (!_currencyToAbbreviation.TryGetValue(currency, out item))
+            string abbreviation;
+            if (!_currencyToAbbreviation.TryGetValue(currency, out abbreviation))
                 return string.Empty;
 
-            return item;
+            return abbreviation;
         }
 
         public static CurrencyAbbreviationMap Instance
