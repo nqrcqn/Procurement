@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Buyouts-->
-        <CheckBox Content="Tab Buyout" Grid.Row="0" Foreground="#FFAB9066" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="{Binding BuyoutInfo.Enabled, Mode=TwoWay}"/>
+        <CheckBox Content="Tab Buyout" Grid.Row="0" Foreground="#FFAB9066" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding BuyoutInfo.Enabled, Mode=TwoWay}"/>
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
             <TextBox  x:Name="BuyoutValue" Height="25" Width="50" IsEnabled="{Binding BuyoutInfo.Enabled, Mode=TwoWay}" Text="{Binding BuyoutInfo.Value}"/>
             <Button Content="+"  Height="25" Width="20" Command="{Binding Path=BuyoutInfo.IncreaseValue}" IsEnabled="{Binding BuyoutInfo.Enabled, Mode=TwoWay}"/>
@@ -33,8 +33,8 @@
                 <ColumnDefinition Width="175" />
             </Grid.ColumnDefinitions>
 
-            <Button Content="Save" Grid.Column="0" Height="25" Width="150" Click="Save_Clicked"/>
-            <Button Content="Cancel" Grid.Column="2" Height="25" Width="150" Click="Cancel_Click" HorizontalAlignment="Left" />
+            <Button Content="Save" Grid.Column="0" Height="25" Width="150" Click="Save_Clicked" HorizontalAlignment="Center" />
+            <Button Content="Cancel" Grid.Column="2" Height="25" Width="150" Click="Cancel_Click" HorizontalAlignment="Center" />
 
             </Grid>
     </Grid>
