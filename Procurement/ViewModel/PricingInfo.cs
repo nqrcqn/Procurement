@@ -91,12 +91,12 @@ namespace Procurement.ViewModel
             if (string.IsNullOrEmpty(orb))
                 orb = valueOrbPair[1];
 
-            enabled = value != string.Empty;
+            enabled = !string.IsNullOrEmpty(value) && !string.IsNullOrEmpty(orb);
         }
 
         public string GetSaveText()
         {
-            if (!enabled || (string.IsNullOrEmpty(value) && string.IsNullOrEmpty(orb)))
+            if (!enabled)
                 return string.Empty;
 
             string abbreviation = CurrencyAbbreviationMap.Instance.FromCurrency(orb);
