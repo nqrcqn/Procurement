@@ -70,7 +70,7 @@
 
             <Button Content="Save" Grid.Column="0" Height="25" Width="110" Click="Save_Clicked"/>
             <Button Content="Save Image" Grid.Column="2" Height="25" Width="110" Click="SaveImage_Click" HorizontalAlignment="Left" />
-            <Button Content="Timestamp" Grid.Column="4" Height="25" Width="90" Click="Timestamp_Click" HorizontalAlignment="Left" />
+            <Button Content="Timestamp" Grid.Column="4" Height="25" Width="110" Click="Timestamp_Click" HorizontalAlignment="Left" />
         </Grid>
     </Grid>
 </UserControl>
