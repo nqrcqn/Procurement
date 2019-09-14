@@ -42,7 +42,7 @@ namespace POEApi.Infrastructure
         public string FromAbbreviation(string abbreviation)
         {
             string currency;
-            if (!_abbreviationToCurrency.TryGetValue(abbreviation, out currency))
+            if (abbreviation == null || !_abbreviationToCurrency.TryGetValue(abbreviation, out currency))
                 return string.Empty;
             
             return currency;
@@ -51,7 +51,7 @@ namespace POEApi.Infrastructure
         public string FromCurrency(string currency)
         {
             string abbreviation;
-            if (!_currencyToAbbreviation.TryGetValue(currency, out abbreviation))
+            if (currency == null || !_currencyToAbbreviation.TryGetValue(currency, out abbreviation))
                 return string.Empty;
 
             return abbreviation;
