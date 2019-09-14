@@ -278,6 +278,7 @@ namespace Procurement.Controls
 
             if (string.IsNullOrEmpty(abbreviation))
                 abbreviation = orbType;
+
             var vm = DataContext as ItemDisplayViewModel;
             var item = vm.Item;
 
