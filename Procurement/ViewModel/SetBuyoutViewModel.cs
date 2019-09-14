@@ -109,7 +109,7 @@ namespace Procurement.ViewModel
 
         private bool CanGetPobData(object o)
         {
-            return (item.GetType() == typeof(Gear) || item.GetType() == typeof(AbyssJewel)) && item.ItemLevel > 0;
+            return item.GetType() == typeof(Gear) && item.ItemLevel > 0;
         }
     }
 }
