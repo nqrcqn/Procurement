@@ -50,7 +50,7 @@
         <ComboBox IsEditable="True">
             <ComboBoxItem>
                 <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
-                    <ListBox Height="25" Width="155" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}" ItemsSource="{Binding OrbTypes}" Text="{Binding PriceInfo.Orb}"/>
+                    <TextBox Height="25" Width="155" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}" ItemsSource="{Binding OrbTypes}" Text="{Binding PriceInfo.Orb}"/>
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
