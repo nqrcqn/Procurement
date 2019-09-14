@@ -47,14 +47,8 @@
             <Button Content="+"  Height="25" Width="20" Command="{Binding Path=PriceInfo.IncreaseValue}" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}"/>
             <Button Content="-"  Height="25" Width="20" Command="{Binding Path=PriceInfo.DecreaseValue}" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}"/>
         </StackPanel>
-        <ComboBox IsEditable="True" ItemsSource="{Binding OrbTypes}">
-        <ComboBox>
-            <ComboBoxItem>
-                <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2">
-                    <TextBox Height="25" Width="155" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}" Text="{Binding PriceInfo.Orb}"
-                </StackPanel>
-            </ComboBoxItem>
-        </ComboBox>
+        <ComboBox IsEditable="True" Grid.Column="2" Grid.Row="2" Height="25" MaxWidth="155" IsEnabled="{Binding PriceInfo.Enabled, Mode=TwoWay}" ItemsSource="{Binding OrbTypes}" Text="{Binding PriceInfo.Orb}" />
+
 
         <TextBlock Grid.Row="3" Foreground="#FFAB9066" Text="Notes:" />
 
