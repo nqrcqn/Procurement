@@ -344,6 +344,13 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
+            if (item.ItemLevel > 0 && !(item.StackSize > 0) && !(item is FullBestiaryOrb) && map == null)
+            {
+                text = "gear";
+                if (text.Contains(word))
+                    goto End;
+            }
+
             if (gear != null && gear.GearType.Equals(GearType.Unknown)
                 && (gear.TypeLine.StartsWith("Sacrifice at ")
                  || gear.TypeLine.StartsWith("Mortal ")
