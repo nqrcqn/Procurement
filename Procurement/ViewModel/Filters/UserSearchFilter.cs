@@ -13,8 +13,6 @@ namespace Procurement.ViewModel.Filters
         }
 
         private List<List<string>> filterlists;
-        private bool OrMatch;
-        private bool HasSpace;
         public UserSearchFilter(List<List<string>> filterlists)
         {
             this.filterlists = filterlists;
