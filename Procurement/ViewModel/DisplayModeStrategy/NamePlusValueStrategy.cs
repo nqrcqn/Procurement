@@ -38,9 +38,6 @@ namespace Procurement.ViewModel
                         ret.Inlines.Add(new Run(", ") { Foreground = Brushes.Gray });
                 }
             }
-
-            ret.Margin = new Thickness(0);
-
             return ret;
         }
     }
