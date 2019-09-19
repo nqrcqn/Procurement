@@ -119,7 +119,7 @@ namespace Procurement.ViewModel.Filters
             if (gear != null && gear.GearType.ToString().ToLowerInvariant().Contains(word))
                 goto End;
 
-            if (item.Microtransactions != null && item.Microtransactions.Count > 0)
+            if (item.Microtransactions?.Count > 0)
                 if (item.Microtransactions.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
@@ -131,19 +131,19 @@ namespace Procurement.ViewModel.Filters
                 if (item.Implicitmods.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
-            if (item.FracturedMods != null && item.FracturedMods.Count > 0)
+            if (item.FracturedMods?.Count > 0)
                 if (item.FracturedMods.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
-            if (item.CraftedMods != null && item.CraftedMods.Count > 0)
+            if (item.CraftedMods?.Count > 0)
                 if (item.CraftedMods.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
-            if (item.EnchantMods != null && item.EnchantMods.Count > 0)
+            if (item.EnchantMods?.Count > 0)
                 if (item.EnchantMods.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
-            if (item.UtilityMods != null && item.UtilityMods.Count > 0)
+            if (item.UtilityMods?.Count > 0)
                 if (item.UtilityMods.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
@@ -246,16 +246,19 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
+            bool HasItemLevel = item.ItemLevel > 0;
+            bool ItemIsGearOrMap = HasItemLevel && !(item.StackSize > 0) && !(item is Incubator) && !(item is FullBestiaryOrb);
+
             string text = "";
 
-            if (item.ItemLevel > 0 && !(item is Incubator))
+            if (ItemIsGearOrMap || item is FullBestiaryOrb)
             {
                 text = "rarity: " + item.Rarity.ToString().ToLowerInvariant();
                 if (text.Contains(word))
                     goto End;
             }
 
-            if (item.ItemLevel > 0)
+            if (HasItemLevel)
             {
                 text = "item level: " + item.ItemLevel.ToString();
                 if (text.Contains(word))
@@ -288,21 +291,21 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (item.EnchantMods != null && item.EnchantMods.Count > 0)
+            if (item.EnchantMods?.Count > 0)
             {
                 text = "enchanted";
                 if (text.Contains(word))
                     goto End;
             }
 
-            if (item.CraftedMods != null && item.CraftedMods.Count > 0)
+            if (item.CraftedMods?.Count > 0)
             {
                 text = "crafted";
                 if (text.Contains(word))
                     goto End;
             }
 
-            if (item.VeiledMods != null && item.VeiledMods.Count > 0)
+            if (item.VeiledMods?.Count > 0)
             {
                 text = "veiled";
                 if (text.Contains(word))
@@ -316,10 +319,24 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
+            if (!item.Corrupted && (item is Gem || (ItemIsGearOrMap && !gear?.GearType.Equals(GearType.Flask))))
+            {
+                text = "uncorrupted";
+                if (text.StartsWith(word))
+                    goto End;
+            }
+
             if (item.Corrupted)
             {
                 text = "corrupted";
                 if (text.Contains(word))
+                    goto End;
+            }
+
+            if (item.Identified && ItemIsGearOrMap)
+            {
+                text = "identified";
+                if (text.StartsWith(word))
                     goto End;
             }
 
@@ -365,7 +382,7 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (item.ItemLevel > 0 && !(item.StackSize > 0) && !(item is Incubator) && !(item is FullBestiaryOrb) && map == null)
+            if (ItemIsGearOrMap && map == null)
             {
                 text = "gear";
                 if (text.Contains(word))
@@ -383,7 +400,7 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (gear != null && gear.Sockets.Count > 0)
+            if (gear?.Sockets.Count > 0)
             {
                 List<string> sockettext = new List<string>();
 
@@ -476,7 +493,7 @@ namespace Procurement.ViewModel.Filters
                 }
             }
 
-            if (item.ItemLevel > 0 && word.StartsWith("ilvl:"))
+            if (HasItemLevel && word.StartsWith("ilvl:"))
             {
                 int ilvl;
                 bool greaterthan = false;
