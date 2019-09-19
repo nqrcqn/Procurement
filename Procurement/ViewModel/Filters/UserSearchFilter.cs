@@ -343,7 +343,7 @@ namespace Procurement.ViewModel.Filters
             if (!item.Identified)
             {
                 text = "unidentified";
-                if (text.Contains(word))
+                if (text.Contains(word) && !"identified".StartsWith(word))
                     goto End;
             }
 
