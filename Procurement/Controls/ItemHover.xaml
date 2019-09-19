@@ -47,8 +47,10 @@
             <Setter Property="BorderBrush" Value="Transparent" />
             <Setter Property="FontFamily" Value="../Resources/#Fontin SmallCaps" />
             <Style.Resources>
-                <Style TargetType="{x:Type FlowDocument}">
-                    <Setter Property="PagePadding" Value="0" />
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0" />
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="LineHeight" Value="Auto" />
                 </Style>
             </Style.Resources>
         </Style>
