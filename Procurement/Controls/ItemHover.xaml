@@ -132,7 +132,7 @@
                                                 <Setter Property="Margin" Value="0"/>
                                             </Style>
                                         </RichTextBox.Resources>
-                                      <v:BindableRichTextBox>
+                                    </v:BindableRichTextBox>
                                 </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
