@@ -7,7 +7,6 @@ using POEApi.Model;
 using System.Windows.Documents;
 using Procurement.ViewModel;
 using System.Windows.Media;
-using System.Windows;
 
 namespace Procurement.View
 {
@@ -16,14 +15,7 @@ namespace Procurement.View
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             Property property = value as Property;
-
-            var fd = new FlowDocument(DisplayModeFactory.Create(property).Get());
-
-            Style style = new Style(typeof(Paragraph));
-            style.Setters.Add(new Setter(Block.MarginProperty, new Thickness(0)));
-            fd.Resources.Add(typeof(Paragraph), style);
-
-            return fd;
+            return new FlowDocument(DisplayModeFactory.Create(property).Get());
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
