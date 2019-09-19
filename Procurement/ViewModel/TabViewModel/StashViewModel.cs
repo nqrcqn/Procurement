@@ -17,6 +17,7 @@ using POEApi.Infrastructure;
 using Procurement.Interfaces;
 using Procurement.View.ViewModel;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Procurement.ViewModel
 {
@@ -45,6 +46,9 @@ namespace Procurement.ViewModel
 
         private void processFilter()
         {
+        
+Stopwatch sw = new Stopwatch();
+sw.Start();
             string cleanfilter = "";
             bool ContainsOr = false;
             bool ContainsSpace = false;
@@ -133,6 +137,10 @@ namespace Procurement.ViewModel
             List<IFilter> allfilters = getUserFilter(filterlists);
             allfilters.AddRange(categoryFilter);
 
+int n = 0;
+
+while (n < 20)
+{
             foreach (var item in tabsAndContent)
             {
                 item.Stash.Filters = allfilters;
@@ -148,6 +156,12 @@ namespace Procurement.ViewModel
                     (item.TabItem.Content as UIElement).Visibility = Visibility.Visible;
                 }
             }
+
+n++;
+}
+sw.Stop();
+MessageBox.Show("Time taken: " + sw.Elapsed.TotalMilliseconds + "ms");
+
             var first = tabsAndContent.Find(w => w.TabItem.Visibility == Visibility.Visible);
             if (first != null)
                 first.TabItem.IsSelected = true;
