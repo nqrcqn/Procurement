@@ -84,7 +84,54 @@ namespace Procurement.ViewModel
                     HasSpace = true;
             }
 
-            List<IFilter> allfilters = getUserFilter(cleanfilter, OrMatch, HasSpace);
+            var filterlists = new List<List<String>>();
+            var filterlist = new List<String>();
+
+            if (!OrMatch)
+            {
+                if (!HasSpace)
+                {
+                    filterlist.Add(new List<string> { cleanfilter.Trim('"') });
+                }
+                else
+                {
+                    var words = filter.Split('"')
+                                      .Select((element, index) => index % 2 == 0
+                                          ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                                          : new string[] { element })
+                                      .SelectMany(element => element).ToList();
+
+                    filterlist.Add(words);
+                }
+
+                filterlists.Add(filterlist);
+            }
+            else
+            {
+                var words = cleanfilter.Split('|', StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var word in words)
+                {
+                    if (!HasSpace)
+                    {
+                        filterlist.Add(new List<string> { word.Trim('"') });
+                    }
+                    else
+                    {
+                        var words1 = word.Split('"')
+                                         .Select((element, index) => index % 2 == 0
+                                             ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                                             : new string[] { element })
+                                         .SelectMany(element => element).ToList();
+
+                        filterlist.Add(words1);
+                    }
+
+                    filterlists.Add(filterlist);
+                }
+            }
+
+            List<IFilter> allfilters = getUserFilter(filterlists);
             allfilters.AddRange(categoryFilter);
 
             foreach (var item in tabsAndContent)
@@ -399,7 +446,7 @@ namespace Procurement.ViewModel
                     BorderBrush = Brushes.Transparent
                 };
 
-                var stashTab = TabFactory.GenerateTab(currentTab, getUserFilter(string.Empty, false, false));
+                var stashTab = TabFactory.GenerateTab(currentTab, getUserFilter(new List<List<String>>()));
 
                 CraftTabAndContent(item, stashTab, i);
 
@@ -439,12 +486,12 @@ namespace Procurement.ViewModel
             return menuItem;
         }
 
-        private static List<IFilter> getUserFilter(string filter, bool OrMatch, bool HasSpace)
+        private static List<IFilter> getUserFilter(List<List<string>> filterlists)
         {
-            if (string.IsNullOrEmpty(filter))
+            if (!(filterlists?.Count > 0))
                 return new List<IFilter>();
 
-            UserSearchFilter searchCriteria = new UserSearchFilter(filter, OrMatch, HasSpace);
+            UserSearchFilter searchCriteria = new UserSearchFilter(filterlists);
             return new List<IFilter>() { searchCriteria };
         }
 
