@@ -15,7 +15,9 @@ namespace Procurement.View
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             Property property = value as Property;
-            return new FlowDocument(DisplayModeFactory.Create(property).Get());
+            FlowDocument flowDoc = new FlowDocument(DisplayModeFactory.Create(property).Get());
+            flowDoc.PagePadding = new Thickness(0);
+            return flowDoc;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
