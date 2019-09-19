@@ -363,14 +363,14 @@ namespace Procurement.ViewModel.Filters
 
             if (item is FullBestiaryOrb)
             {
-                text = "captured beast";
+                text = "captured beasts";
                 if (text.Contains(word))
                     goto End;
             }
 
             if (item is Gem)
             {
-                text = "gem";
+                text = "gems";
                 if (text.Contains(word))
                     goto End;
             }
@@ -395,7 +395,7 @@ namespace Procurement.ViewModel.Filters
                  || gear.TypeLine.StartsWith("Fragment of the ")
                  || gear.TypeLine.EndsWith(" Key")))
             {
-                text = "map fragment";
+                text = "map fragments";
                 if (text.Contains(word))
                     goto End;
             }
