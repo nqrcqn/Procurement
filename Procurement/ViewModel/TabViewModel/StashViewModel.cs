@@ -85,13 +85,12 @@ namespace Procurement.ViewModel
             }
 
             var filterlists = new List<List<String>>();
-            var filterlist = new List<String>();
 
             if (!OrMatch)
             {
                 if (!HasSpace)
                 {
-                    filterlist.Add(new List<string> { cleanfilter.Trim('"') });
+                    filterlists.Add(new List<string> { cleanfilter.Trim('"') });
                 }
                 else
                 {
@@ -101,10 +100,8 @@ namespace Procurement.ViewModel
                                           : new string[] { element })
                                       .SelectMany(element => element).ToList();
 
-                    filterlist.Add(words);
+                    filterlists.Add(words);
                 }
-
-                filterlists.Add(filterlist);
             }
             else
             {
@@ -114,7 +111,7 @@ namespace Procurement.ViewModel
                 {
                     if (!HasSpace)
                     {
-                        filterlist.Add(new List<string> { word.Trim('"') });
+                        filterlists.Add(new List<string> { cleanfilter.Trim('"') });
                     }
                     else
                     {
@@ -124,10 +121,8 @@ namespace Procurement.ViewModel
                                              : new string[] { element })
                                          .SelectMany(element => element).ToList();
 
-                        filterlist.Add(words1);
+                        filterlists.Add(words1);
                     }
-
-                    filterlists.Add(filterlist);
                 }
             }
 
