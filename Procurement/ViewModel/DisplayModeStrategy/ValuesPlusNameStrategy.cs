@@ -17,6 +17,8 @@ namespace Procurement.ViewModel
             if (property.Values.Count > 0)
                 ret.Inlines.Add(new Run(" " + property.Name) { Foreground = Brushes.White});
 
+            ret.Margin = new Thickness(0);
+
             return ret;
         }
     }
