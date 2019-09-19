@@ -7,6 +7,7 @@ using POEApi.Model;
 using System.Windows.Documents;
 using Procurement.ViewModel;
 using System.Windows.Media;
+using System.Windows;
 
 namespace Procurement.View
 {
