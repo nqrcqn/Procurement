@@ -323,9 +323,85 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
+            if (gear != null && gear.Sockets.Count > 0)
+            {
+                List<string> sockettext = new List<string>();
+
+                if (gear.Sockets.Count == 1)
+                {
+                    sockettext.Add("one socket");
+                    sockettext.Add("1 socket");
+                }
+                else
+                {
+                    sockettext.Add(gear.Sockets.Count.ToString() + " sockets");
+
+                    var linkedsockets = gear.Sockets
+                        .GroupBy(s => s.Group)
+                        .Select(g => new { links = g.Count() });
+
+                    if (linkedsockets.Any(g => g.links == 6))
+                    {
+                        sockettext.Add("six linked");
+                        sockettext.Add("6 linked");
+                        sockettext.Add("six-linked");
+                        sockettext.Add("6-linked");
+                    }
+                    else if (linkedsockets.Any(g => g.links == 5))
+                    {
+                        sockettext.Add("five linked");
+                        sockettext.Add("5 linked");
+                        sockettext.Add("five-linked");
+                        sockettext.Add("5-linked");
+                    }
+                    else
+                    {
+                        if (linkedsockets.Any(g => g.links == 4))
+                        {
+                            sockettext.Add("four linked");
+                            sockettext.Add("4 linked");
+                            sockettext.Add("four-linked");
+                            sockettext.Add("4-linked");
+                        }
+                        else if (linkedsockets.Any(g => g.links == 3))
+                        {
+                            sockettext.Add("three linked");
+                            sockettext.Add("3 linked");
+                            sockettext.Add("three-linked");
+                            sockettext.Add("3-linked");
+                        }
+
+                        if (linkedsockets.Any(g => g.links == 2))
+                        {
+                            sockettext.Add("two linked");
+                            sockettext.Add("2 linked");
+                            sockettext.Add("two-linked");
+                            sockettext.Add("2-linked");
+                        }
+                    }
+                }
+
+                if (sockettext.Any(x => x.Contains(word)))
+                    goto End;
+            }
+
             if (!item.Identified)
             {
                 text = "unidentified";
+                if (text.Contains(word))
+                    goto End;
+            }
+
+            if (item.Elder)
+            {
+                text = "elder";
+                if (text.Contains(word))
+                    goto End;
+            }
+
+            if (item.Shaper)
+            {
+                text = "shaper";
                 if (text.Contains(word))
                     goto End;
             }
@@ -344,7 +420,14 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (item.ItemLevel > 0 && !(item.StackSize > 0) && !(item is FullBestiaryOrb) && map == null)
+            if ((gear == null && item.StackSize > 0) || item is Incubator)
+            {
+                text = "currency";
+                if (text.Contains(word))
+                    goto End;
+            }
+
+            if (item.ItemLevel > 0 && !(item.StackSize > 0) && !(item is Incubator) && !(item is FullBestiaryOrb) && map == null)
             {
                 text = "gear";
                 if (text.Contains(word))
