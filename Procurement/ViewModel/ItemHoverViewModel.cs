@@ -43,6 +43,7 @@ namespace Procurement.ViewModel
         public List<string> CraftedMods { get; set; }
         public List<string> VeiledMods { get; set; }
         public List<string> FracturedMods { get; set; }
+        public List<string> UtilityMods { get; set; }
 
         public bool HasCraftedMods { get; private set; }
         public bool HasVeiledMods { get; private set; }
@@ -116,6 +117,8 @@ namespace Procurement.ViewModel
 
             this.FracturedMods = item.FracturedMods;
 
+            this.UtilityMods = item.UtilityMods;
+            
             SecondaryDescriptionText = item.SecDescrText;
             setTypeSpecificProperties(item);
 
