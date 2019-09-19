@@ -45,9 +45,9 @@ namespace Procurement.ViewModel
 
         private void processFilter()
         {
-            string cleanfilter = null;
-            bool OrMatch = false;
-            bool HasSpace = false;
+            string cleanfilter = "";
+            bool ContainsOr = false;
+            bool ContainsSpace = false;
 
             if (!string.IsNullOrEmpty(filter))
             {
@@ -78,29 +78,31 @@ namespace Procurement.ViewModel
                     cleanfilter = "\"-" + cleanfilter.Substring(2);
 
                 if (cleanfilter.Contains('|'))
-                    OrMatch = true;
+                    ContainsOr = true;
 
                 if (cleanfilter.Contains(' '))
-                    HasSpace = true;
+                    ContainsSpace = true;
             }
 
             var filterlists = new List<List<String>>();
 
-            if (!OrMatch)
+            if (!ContainsOr)
             {
-                if (!HasSpace)
+                if (!ContainsSpace)
                 {
-                    filterlists.Add(new List<string> { cleanfilter.Trim('"') });
+                    if (!string.IsNullOrEmptySpace.(cleanfilter.Trim('"')))
+                        filterlists.Add(new List<string> { cleanfilter.Trim('"') });
                 }
                 else
                 {
-                    var words = filter.Split('"')
+                    var words = cleanfilter.Split('"')
                                       .Select((element, index) => index % 2 == 0
                                           ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                                           : new string[] { element })
                                       .SelectMany(element => element).ToList();
 
-                    filterlists.Add(words);
+                    if (words?.Count > 0)
+                        filterlists.Add(words);
                 }
             }
             else
@@ -109,9 +111,10 @@ namespace Procurement.ViewModel
 
                 foreach (var word in words)
                 {
-                    if (!HasSpace)
+                    if (!ContainsSpace)
                     {
-                        filterlists.Add(new List<string> { cleanfilter.Trim('"') });
+                        if (!string.IsNullOrEmptySpace.(word.Trim('"')))
+                            filterlists.Add(new List<string> { word.Trim('"') });
                     }
                     else
                     {
@@ -121,7 +124,8 @@ namespace Procurement.ViewModel
                                              : new string[] { element })
                                          .SelectMany(element => element).ToList();
 
-                        filterlists.Add(words1);
+                        if (words1?.Count > 0)
+                            filterlists.Add(words1);
                     }
                 }
             }
