@@ -90,7 +90,7 @@ namespace Procurement.ViewModel
             {
                 if (!ContainsSpace)
                 {
-                    if (!string.IsNullOrEmpty.(cleanfilter.Trim('"')))
+                    if (!string.IsNullOrEmpty(cleanfilter.Trim('"')))
                         filterlists.Add(new List<string> { cleanfilter.Trim('"') });
                 }
                 else
@@ -113,7 +113,7 @@ namespace Procurement.ViewModel
                 {
                     if (!ContainsSpace)
                     {
-                        if (!string.IsNullOrEmpty.(word.Trim('"')))
+                        if (!string.IsNullOrEmpty(word.Trim('"')))
                             filterlists.Add(new List<string> { word.Trim('"') });
                     }
                     else
