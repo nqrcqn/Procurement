@@ -39,7 +39,7 @@ namespace Procurement.ViewModel.Filters
             if (!(filterlists?.Count > 0))
                 return false;
 
-            foreach (var list inside filterlists)
+            foreach (var list in filterlists)
             {
                 if (list?.Count > 0 && list.All(x => hasMatch(x, item)))
                     return true;
