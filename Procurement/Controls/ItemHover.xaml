@@ -133,7 +133,6 @@
                     </ItemsControl>
 
                     <ItemsControl ItemsSource="{Binding UtilityMods}"
-                                  Padding="10 0 10 5"
                                   Visibility="{Binding UtilityMods,
                                                        Converter={StaticResource bc},
                                                        ConverterParameter=CollapseWhenFalse}">
