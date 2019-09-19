@@ -12,7 +12,7 @@ namespace Procurement.ViewModel.Filters
             get { return FilterGroup.Default; }
         }
 
-        private string filterlists;
+        private List<List<string>> filterlists;
         private bool OrMatch;
         private bool HasSpace;
         public UserSearchFilter(List<List<string>> filterlists)
