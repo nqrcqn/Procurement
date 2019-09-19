@@ -18,7 +18,7 @@ namespace Procurement.View
             Property property = value as Property;
             var paragraph = DisplayModeFactory.Create(property).Get();
             paragraph.Margin = new Thickness(0);
-            paragraph.LineHeight = 0;
+            paragraph.LineHeight = 1;
             FlowDocument flowDoc = new FlowDocument(paragraph);
             flowDoc.PagePadding = new Thickness(0);
             return flowDoc;
