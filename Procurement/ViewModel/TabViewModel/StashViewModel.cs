@@ -108,7 +108,7 @@ namespace Procurement.ViewModel
             }
             else
             {
-                var words = cleanfilter.Split('|', StringSplitOptions.RemoveEmptyEntries);
+                var words = cleanfilter.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var word in words)
                 {
