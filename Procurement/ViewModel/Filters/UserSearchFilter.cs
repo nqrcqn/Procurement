@@ -319,7 +319,7 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (!item.Corrupted && (item is Gem || (ItemIsGearOrMap && (!gear.GearType.Equals(GearType.Flask) ?? true))))
+            if (!item.Corrupted && (item is Gem || (ItemIsGearOrMap && !gear.GearType.Equals(GearType.Flask))))
             {
                 text = "uncorrupted";
                 if (text.StartsWith(word))
