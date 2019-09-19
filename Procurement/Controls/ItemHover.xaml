@@ -109,28 +109,14 @@
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
 
-                    <ItemsControl ItemsSource="{Binding Properties}"
-                                  Padding="0 5 0 5"
-                                  Visibility="{Binding Properties,
-                                                       Converter={StaticResource bc},
-                                                       ConverterParameter=CollapseWhenFalse}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Vertical" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel>
-                                    <v:BindableRichTextBox
-                                        Width="{Binding Path=ActualWidth,
-                                                ElementName=ItemHeader,
-                                                Mode=OneWay}"
-                                        Document="{Binding Converter={StaticResource pc}}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                    <v:BindableRichTextBox Width="{Binding Path=ActualWidth,
+                                                           ElementName=ItemHeader,
+                                                           Mode=OneWay}"
+                        Document="{Binding Converter={StaticResource pc}}"
+                        Padding="0 5 0 5"
+                        Visibility="{Binding Properties,
+                                                                Converter={StaticResource bc},
+                                                                ConverterParameter=CollapseWhenFalse}" />
 
                     <ItemsControl ItemsSource="{Binding UtilityMods}"
                                   Padding="10 0 10 5"
