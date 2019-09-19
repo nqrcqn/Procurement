@@ -164,7 +164,7 @@ namespace Procurement.ViewModel
 
             bool HasMods = HasFracturedMods || HasExplicitMods || HasCraftedMods || HasVeiledMods || IsMirrored || IsUnidentified || IsCorrupted;
 
-            if (Properties != null && (HasRequirements || HasEnchantMods || HasImplicitMods || HasMods || HasMicrotransactions || FlavourText != null || DescriptionText != null || IsIncubatorProgressVisible))
+            if ((Properties != null || UtilityMods != null) && (HasRequirements || HasEnchantMods || HasImplicitMods || HasMods || HasMicrotransactions || FlavourText != null || DescriptionText != null || IsIncubatorProgressVisible))
             {
                 this.SeparateProperties = true;
             }
