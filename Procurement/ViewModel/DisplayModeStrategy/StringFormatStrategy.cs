@@ -26,6 +26,8 @@ namespace Procurement.ViewModel
             ret.Inlines.Add(new Run(property.Values[1].Item1) { Foreground = Brushes.White } );
             ret.Inlines.Add(new Run(parts[2].Substring(1)) { Foreground = Brushes.Gray });
 
+            ret.Margin = new Thickness(0);
+
             return ret;
         }
     }
