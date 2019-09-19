@@ -126,13 +126,7 @@
                                         Width="{Binding Path=ActualWidth,
                                                 ElementName=ItemHeader,
                                                 Mode=OneWay}"
-                                        Document="{Binding Converter={StaticResource pc}}">
-                                        <RichTextBox.Resources>
-                                            <Style TargetType="{x:Type Paragraph}">
-                                                <Setter Property="Margin" Value="0"/>
-                                            </Style>
-                                        </RichTextBox.Resources>
-                                    </v:BindableRichTextBox>
+                                        Document="{Binding Converter={StaticResource pc}}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
