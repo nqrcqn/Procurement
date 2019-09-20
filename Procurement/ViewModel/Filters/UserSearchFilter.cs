@@ -55,7 +55,7 @@ namespace Procurement.ViewModel.Filters
         {
             var gear = item as Gear;
             var map = item as Map;
-            var gem = Item as Gem;
+            var gem = item as Gem;
 
             bool dontmatch = false;
 
@@ -75,7 +75,7 @@ namespace Procurement.ViewModel.Filters
             if (!string.IsNullOrEmpty(item.Name) && item.Name.ToLowerInvariant().Contains(word))
                 goto End;
 
-            if (gear?.GearType.ToString().ToLowerInvariant().Contains(word))
+            if (gear != null && gear.GearType.ToString().ToLowerInvariant().Contains(word))
                 goto End;
 
             if (item.Microtransactions?.Count > 0)
@@ -335,11 +335,11 @@ namespace Procurement.ViewModel.Filters
 
                 if (gem.HasExperience)
                 {
-                    text = gem.ExperienceNumerator?.ToString();
+                    text = gem.ExperienceNumerator.ToString();
                     if (text.Contains(word))
                         goto End;
 
-                    text = gem.ExperienceDenominator?.ToString();
+                    text = gem.ExperienceDenominator.ToString();
                     if (text.Contains(word))
                         goto End;
                 }
