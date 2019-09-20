@@ -55,6 +55,7 @@ namespace Procurement.ViewModel.Filters
         {
             var gear = item as Gear;
             var map = item as Map;
+            var gem = Item as Gem;
 
             bool dontmatch = false;
 
@@ -74,7 +75,7 @@ namespace Procurement.ViewModel.Filters
             if (!string.IsNullOrEmpty(item.Name) && item.Name.ToLowerInvariant().Contains(word))
                 goto End;
 
-            if (gear != null && gear.GearType.ToString().ToLowerInvariant().Contains(word))
+            if (gear?.GearType.ToString().ToLowerInvariant().Contains(word))
                 goto End;
 
             if (item.Microtransactions?.Count > 0)
@@ -277,7 +278,7 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (!item.Corrupted && (item is Gem || (ItemIsGearOrMap && (!gear?.GearType.Equals(GearType.Flask) ?? true))))
+            if (!item.Corrupted && (gem != null || (ItemIsGearOrMap && (!gear?.GearType.Equals(GearType.Flask) ?? true))))
             {
                 text = "uncorrupted";
                 if (text.StartsWith(word))
@@ -326,11 +327,22 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (item is Gem)
+            if (gem != null)
             {
                 text = "gems";
                 if (text.Contains(word))
                     goto End;
+
+                if (gem.HasExperience)
+                {
+                    text = gem.ExperienceNumerator?.ToString();
+                    if (text.Contains(word))
+                        goto End;
+
+                    text = gem.ExperienceDenominator?.ToString();
+                    if (text.Contains(word))
+                        goto End;
+                }
             }
 
             if ((gear == null && item.StackSize > 0) || item is Incubator)
