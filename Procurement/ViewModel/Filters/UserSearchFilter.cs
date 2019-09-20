@@ -12,14 +12,10 @@ namespace Procurement.ViewModel.Filters
             get { return FilterGroup.Default; }
         }
 
-        private string filter;
-        private bool OrMatch;
-        private bool HasSpace;
-        public UserSearchFilter(string filter, bool OrMatch, bool HasSpace)
+        private List<List<string>> filterlists;
+        public UserSearchFilter(List<List<string>> filterlists)
         {
-            this.filter = filter;
-            this.OrMatch = OrMatch;
-            this.HasSpace = HasSpace;
+            this.filterlists = filterlists;
         }
         public bool CanFormCategory
         {
@@ -38,51 +34,13 @@ namespace Procurement.ViewModel.Filters
 
         public bool Applicable(Item item)
         {
-            if (string.IsNullOrEmpty(filter))
+            if (!(filterlists?.Count > 0))
                 return false;
 
-            if (!OrMatch)
+            foreach (var list in filterlists)
             {
-                if (!HasSpace)
-                {
-                    if (hasMatch(filter.Trim('"'), item))
-                        return true;
-                }
-                else
-                {
-                    var words = filter.Split('"')
-                                         .Select((element, index) => index % 2 == 0
-                                             ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                                             : new string[] { element })
-                                         .SelectMany(element => element).ToList();
-
-                    if (words.All(x => hasMatch(x, item)))
-                        return true;
-                }
-            }
-            else
-            {
-                var words = filter.Split('|');
-
-                foreach (var word in words)
-                {
-                    if (!HasSpace)
-                    {
-                        if (hasMatch(word.Trim('"'), item))
-                            return true;
-                    }
-                    else
-                    {
-                        var words1 = word.Split('"')
-                                             .Select((element, index) => index % 2 == 0
-                                                 ? element.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                                                 : new string[] { element })
-                                             .SelectMany(element => element).ToList();
-
-                        if (words1.All(x => hasMatch(x, item)))
-                            return true;
-                    }
-                }
+                if (list?.Count > 0 && list.All(x => hasMatch(x, item)))
+                    return true;
             }
 
             var gear = item as Gear;
@@ -97,6 +55,7 @@ namespace Procurement.ViewModel.Filters
         {
             var gear = item as Gear;
             var map = item as Map;
+            var gem = item as Gem;
 
             bool dontmatch = false;
 
@@ -319,7 +278,7 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (!item.Corrupted && (item is Gem || (ItemIsGearOrMap && (!gear?.GearType.Equals(GearType.Flask) ?? true))))
+            if (!item.Corrupted && (gem != null || (ItemIsGearOrMap && (!gear?.GearType.Equals(GearType.Flask) ?? true))))
             {
                 text = "uncorrupted";
                 if (text.StartsWith(word))
@@ -368,11 +327,22 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (item is Gem)
+            if (gem != null)
             {
                 text = "gems";
                 if (text.Contains(word))
                     goto End;
+
+                if (gem.HasExperience)
+                {
+                    text = gem.ExperienceNumerator.ToString();
+                    if (text.Contains(word))
+                        goto End;
+
+                    text = gem.ExperienceDenominator.ToString();
+                    if (text.Contains(word))
+                        goto End;
+                }
             }
 
             if ((gear == null && item.StackSize > 0) || item is Incubator)
