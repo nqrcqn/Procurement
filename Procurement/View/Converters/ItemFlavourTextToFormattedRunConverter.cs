@@ -22,20 +22,23 @@ namespace Procurement.View
                 return null;
 
             string flavourtext = viewModel.FlavourText;
-            Paragraph paragraph = new Paragraph();
 
             if (viewModel.IsDivinationCard && (flavourtext.StartsWith("<size:") || flavourtext.StartsWith("<smaller>{")))
                 flavourtext = flavourtext.TrimEnd('}').Substring(10);
 
             if (flavourtext.Contains("<d"))
             {
-                Match match = Regex.Match(flavourtext, "(.*?)<default>{(.+?)}(.*?)");
+                Match match = Regex.Match(flavourtext, "(.*?)<default>{(.+?)}(.*)");
 
                 if (match.Success)
                 {
+                    var paragraph = new Paragraph();
+
                     paragraph.Inlines.Add(new Run(match.Groups[1].Value) { Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AF6025")), BaselineAlignment = BaselineAlignment.Center, FontStyle = FontStyles.Italic });
                     paragraph.Inlines.Add(new Run(match.Groups[2].Value) { Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#7F7F7F")), BaselineAlignment = BaselineAlignment.Center, FontStyle = FontStyles.Italic });
-                    paragraph.Inlines.Add(new Run(match.Groups[3].Value) { Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AF6025")), BaselineAlignment = BaselineAlignment.Center, FontStyle = FontStyles.Italic });
+
+                    if (!string.IsNullOrEmpty(match.Groups[3].Value))
+                        paragraph.Inlines.Add(new Run(match.Groups[3].Value) { Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#AF6025")), BaselineAlignment = BaselineAlignment.Center, FontStyle = FontStyles.Italic });
 
                     return new FlowDocument(paragraph);
                 }
