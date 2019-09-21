@@ -51,7 +51,17 @@ namespace Procurement.ViewModel
                                         : new SolidColorBrush(Colors.Transparent); }
         }
 
-        public bool IsStackSizeVisible => Item?.StackSize > 0;
+        public bool IsFullStack
+        {
+            get
+            {
+                var gear = Item as Gear;
+
+                return gear != null && gear.GearType == GearType.DivinationCard && gear.StackSize > 0 && gear.StackSize == gear.MaxStackSize;
+            }
+        }
+
+        public bool IsStackSizeVisible => Item?.StackSize > 0 && !IsFullStack;
 
         public int StackSize
         {
