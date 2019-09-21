@@ -51,7 +51,7 @@
                    Text="{Binding StackSize}"
                    TextAlignment="Center"
                    TextWrapping="Wrap"
-                   Visibility="{Binding IsFullStack,
+                   Visibility="{Binding IsFullSetOfCards,
                                Converter={StaticResource bc},
                                ConverterParameter=CollapseWhenFalse}" />
         </Grid>
