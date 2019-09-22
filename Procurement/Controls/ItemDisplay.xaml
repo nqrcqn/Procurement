@@ -43,6 +43,6 @@
                    Visibility="{Binding IsStackSizeVisible,
                                Converter={StaticResource bc},
                                ConverterParameter=CollapseWhenFalse}" />
-        </Grid>
+    </Grid>
     
 </UserControl>
