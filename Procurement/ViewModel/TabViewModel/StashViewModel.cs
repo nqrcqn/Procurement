@@ -57,11 +57,13 @@ namespace Procurement.ViewModel
 
                 cleanfilter = cleanfilter.Replace(" or ", "|");
 
-                if (cleanfilter.Contains(" price"))
+                if (cleanfilter.Contains("no pr"))   // no price
                 {
-                    cleanfilter = cleanfilter.Replace("with price", "price");
-                    cleanfilter = cleanfilter.Replace("without price", "-price");
-                    cleanfilter = cleanfilter.Replace("no price", "-price");
+                    cleanfilter = cleanfilter.Replace(" no pr", " -pr");
+                    cleanfilter = cleanfilter.Replace("|no pr", "|-pr");
+
+                    if (cleanfilter.StartsWith("no pr"))
+                        cleanfilter = "-" + cleanfilter.Substring(3);
                 }
 
                 if (cleanfilter.Contains("not "))
