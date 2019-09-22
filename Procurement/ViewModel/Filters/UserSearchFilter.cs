@@ -370,9 +370,17 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
-            if (Settings.Buyouts.ContainsKey(item.Id))
+            if (!string.IsNullOrEmpty(item.Id) && Settings.Buyouts.ContainsKey(item.Id))
             {
                 text = "priced";
+                if (text.Contains(word))
+                    goto End;
+
+                text = Settings.Buyouts[item.Id].Buyout;
+
+                if (string.IsNullOrEmpty(text))
+                    text = Settings.Buyouts[item.Id].Price;
+
                 if (text.Contains(word))
                     goto End;
             }
