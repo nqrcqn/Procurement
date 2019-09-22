@@ -376,12 +376,18 @@ namespace Procurement.ViewModel.Filters
                 if (text.Contains(word))
                     goto End;
 
-                text = Settings.Buyouts[item.Id].Buyout;
+                string price = Settings.Buyouts[item.Id].Buyout;
 
-                if (string.IsNullOrEmpty(text))
-                    text = Settings.Buyouts[item.Id].Price;
+                if (string.IsNullOrEmpty(price))
+                    price = Settings.Buyouts[item.Id].Price;
+                else
+                {
+                    text = "buyout";
+                    if (text.Contains(word))
+                    goto End;
+                }
 
-                if (text.Contains(word))
+                if (price.Contains(word))
                     goto End;
             }
             else if (!(item is QuestItem) && !(item is Decoration))
