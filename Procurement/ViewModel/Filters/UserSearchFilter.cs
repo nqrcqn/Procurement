@@ -370,6 +370,19 @@ namespace Procurement.ViewModel.Filters
                     goto End;
             }
 
+            if (Settings.Buyouts.ContainsKey(item.Id))
+            {
+                text = "priced";
+                if (text.Contains(word))
+                    goto End;
+            }
+            else if (!(item is QuestItem) && !(item is Decoration))
+            {
+                text = "unpriced";
+                if (text.StartsWith(word))
+                    goto End;
+            }
+
             if (gear?.Sockets.Count > 0)
             {
                 List<string> sockettext = new List<string>();
