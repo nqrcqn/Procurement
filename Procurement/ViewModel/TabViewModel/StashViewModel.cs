@@ -57,31 +57,48 @@ namespace Procurement.ViewModel
 
                 cleanfilter = cleanfilter.Replace(" or ", "|");
 
-                if (cleanfilter.StartsWith("|"))
-                    cleanfilter = cleanfilter.Substring(1);
+                if (cleanfilter.Contains(" price"))
+                {
+                    cleanfilter = cleanfilter.Replace("with price", "price");
+                    cleanfilter = cleanfilter.Replace("without price", "-price");
+                    cleanfilter = cleanfilter.Replace("no price", "-price");
+                }
 
-                if (cleanfilter.EndsWith("|"))
-                    cleanfilter = cleanfilter.Remove(cleanfilter.Length - 1);
+                if (cleanfilter.Contains("not "))
+                {
+                    cleanfilter = cleanfilter.Replace(" not ", " -");
+                    cleanfilter = cleanfilter.Replace("|not ", "|-");
 
-                cleanfilter = cleanfilter.Replace(" |", "|").Replace("| ", "|");
+                    if (cleanfilter.StartsWith("not "))
+                        cleanfilter = "-" + cleanfilter.Substring(4);
+                }
 
-                cleanfilter = cleanfilter.Replace(" not ", " -");
-                cleanfilter = cleanfilter.Replace("|not ", "|-");
+                if (cleanfilter.Contains("-\""))
+                {
+                    cleanfilter = cleanfilter.Replace(" -\"", " \"-");
+                    cleanfilter = cleanfilter.Replace("|-\"", "|\"-");
 
-                if (cleanfilter.StartsWith("not "))
-                    cleanfilter = "-" + cleanfilter.Substring(4);
-
-                cleanfilter = cleanfilter.Replace(" -\"", " \"-");
-                cleanfilter = cleanfilter.Replace("|-\"", "|\"-");
-
-                if (cleanfilter.StartsWith("-\""))
-                    cleanfilter = "\"-" + cleanfilter.Substring(2);
+                    if (cleanfilter.StartsWith("-\""))
+                        cleanfilter = "\"-" + cleanfilter.Substring(2);
+                }
 
                 if (cleanfilter.Contains('|'))
-                    ContainsOr = true;
+                {
+                    cleanfilter = cleanfilter.Replace(" |", "|").Replace("| ", "|");
+
+                    cleanfilter = cleanfilter.Trim('|');
+
+                    if (cleanfilter.Contains('|'))
+                        ContainsOr = true;
+                }
 
                 if (cleanfilter.Contains(' '))
-                    ContainsSpace = true;
+                {
+                    cleanfilter = cleanfilter.Trim();
+
+                    if (cleanfilter.Contains(' '))
+                        ContainsSpace = true;
+                }
             }
 
             var filterlists = new List<List<String>>();
