@@ -39,12 +39,12 @@
         <Style x:Key="ExperienceBarStyle" TargetType="ProgressBar">
             <Setter Property="Minimum" Value="0" />
             <Setter Property="Maximum" Value="1" />
-            <Setter Property="Height" Value="13" />
+            <Setter Property="Height" Value="10" />
             <Setter Property="Width" Value="212" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ProgressBar">
-                        <Border BorderBrush="#262A32" BorderThickness="1" Background="#232B39" CornerRadius="1" Padding="0">
+                        <Border BorderBrush="#262A32" BorderThickness="1" Background="#232B39" CornerRadius="2" Padding="1,2">
                             <Grid x:Name="PART_Track">
                                 <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left" Fill="#FFB26932" />
                             </Grid>
