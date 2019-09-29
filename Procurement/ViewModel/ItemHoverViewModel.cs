@@ -128,7 +128,7 @@ namespace Procurement.ViewModel
             if (gem != null)
             {
                 LevelExperienceProgress = gem.LevelExperienceProgress;
-                ExperienceNumbers =  $"{gem.ExperienceNumerator:n0}/{gem.ExperienceDenominator:n0}";
+                ExperienceNumbers =  $"{gem.ExperienceNumerator}/{gem.ExperienceDenominator}";
             }
 
             if (IsIncubatorProgressVisible)
