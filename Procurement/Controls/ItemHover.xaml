@@ -431,7 +431,6 @@
                                                            Mode=OneWay}"
                         Document="{Binding Converter={StaticResource dc}}"
                         Padding="10 0 10 5"
-                        RenderTransformOrigin="0.5,0.5"
                         Visibility="{Binding IsDivinationCard,
                                                                 Converter={StaticResource bc},
                                                                 ConverterParameter=CollapseWhenFalse}" />
