@@ -434,11 +434,7 @@
                         RenderTransformOrigin="0.5,0.5"
                         Visibility="{Binding IsDivinationCard,
                                                                 Converter={StaticResource bc},
-                                                                ConverterParameter=CollapseWhenFalse}">
-                        <v:BindableRichTextBox.RenderTransform>
-                            <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
-                        </v:BindableRichTextBox.RenderTransform>
-                    </v:BindableRichTextBox>
+                                                                ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
@@ -535,7 +531,7 @@
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 5"
                                 Visibility="{Binding IsGemProgressVisible,
                                                  Converter={StaticResource VisibilityConverter},
                                                  ConverterParameter=CollapseWhenFalse}">
@@ -560,7 +556,7 @@
                                Foreground="{StaticResource CraftedModBrush}" />
                         <ProgressBar Style="{StaticResource ExperienceBarStyle}"
                                      Value="{Binding IncubatorProgress, FallbackValue=0.5, Mode=OneTime}"  />
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 0 10 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Label Style="{StaticResource IncubatorSmall}" 
                                    Content="{Binding IncubationNumbers}" Foreground="White" />
                             <Label Style="{StaticResource IncubatorSmall}"
