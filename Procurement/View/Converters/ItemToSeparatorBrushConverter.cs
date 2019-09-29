@@ -20,15 +20,15 @@ namespace Procurement.View
             else if (item is Prophecy)
                 color = "822B76";
             else if (item is QuestItem)
-                color = "822B76";
+                color = "34532B";
             else if (item is Currency || item is Sextant || item is Essence || item is Fossil || item is Resonator || item is BreachSplinter || item is LegionSplinter)
-                color = "822B76";
+                color = "5F573F";
             else if (item.Rarity == Rarity.Unique)
-                color = "822B76";
+                color = "85442B";
             else if (item.Rarity == Rarity.Rare)
-                color = "822B76";
+                color = "85622B";
             else if (item.Rarity == Rarity.Magic)
-                color = "822B76";
+                color = "443470";
             else
                 color = "808080";
 
