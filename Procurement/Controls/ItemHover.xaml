@@ -50,8 +50,10 @@
                                     <Rectangle.Fill>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                           <GradientStop Color="#FF4B260D" Offset="0.00" />
+                                          <GradientStop Color="#FFF6BB5C" Offset="0.45" />
                                           <GradientStop Color="#FFEAE7A9" Offset="0.45" />
                                           <GradientStop Color="#FFEAE7A9" Offset="0.55" />
+                                          <GradientStop Color="#FFC9A153" Offset="0.55" />
                                           <GradientStop Color="#FF270904" Offset="1.00" />
                                         </LinearGradientBrush>
                                     </Rectangle.Fill>
@@ -536,11 +538,14 @@
                             <Label FontFamily="../Resources/#Fontin SmallCaps"
                                    Content="{Binding ExperienceNumbers}" Foreground="White" />
                         </StackPanel>
-
-                        <Border Margin="0 0 0 5"
-                                BorderBrush="{Binding Item, Converter={StaticResource sc}}"
-                                BorderThickness="1" />
                     </StackPanel>
+
+                    <Border Margin="0 0 0 5"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
+                            BorderThickness="1"
+                            Visibility="{Binding IsGemProgressVisible,
+                                                 Converter={StaticResource bc},
+                                                 ConverterParameter=CollapseWhenFalse}" />
 
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                                 Visibility="{Binding IsIncubatorProgressVisible,
@@ -553,7 +558,7 @@
                         <ProgressBar Style="{StaticResource ExperienceBarStyle}"
                                      Value="{Binding IncubatorProgress, FallbackValue=0.5, Mode=OneTime}"  />
 
-                        <StackPanel Orientation="Horizontal" Margin="10 0 10 5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 0 10 5">
                             <Label Style="{StaticResource IncubatorSmall}" 
                                    Content="{Binding IncubationNumbers}" Foreground="White" />
 
