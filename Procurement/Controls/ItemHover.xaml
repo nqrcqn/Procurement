@@ -508,7 +508,7 @@
                             <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
                                    Content="{Binding ExperienceNumerator, FallbackValue=1}" Foreground="White" />
                             <ProgressBar Minimum="0" Maximum="{Binding ExperienceDenominator, FallbackValue=2}"
-                                         Value="{Binding ExperienceNumerator, FallbackValue=1}"  />
+                                         Value="{Binding ExperienceNumerator, FallbackValue=1, Mode=OneTime}"  />
                         </DockPanel>
 
                         <Border Margin="0 0 0 5"
