@@ -36,13 +36,6 @@
             <Setter Property="FontFamily" Value="../Resources/#Fontin SmallCaps" />
         </Style>
 
-        <Style TargetType="{x:Type ProgressBar}">
-            <Setter Property="Margin" Value="2" />
-            <Setter Property="BorderBrush" Value="#232B39" />
-            <Setter Property="Foreground" Value="#F6BC5D" />
-            <Setter Property="Height" Value="6" />
-        </Style>
-
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -506,6 +499,7 @@
                             <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
                                    Content="{Binding ExperienceNumerator, FallbackValue=1}" Foreground="White" />
                             <ProgressBar Minimum="0" Maximum="{Binding ExperienceDenominator, FallbackValue=2}"
+                                         Foreground="#F6BC5D" Background="#232B39"
                                          Value="{Binding ExperienceNumerator, FallbackValue=1, Mode=OneTime}"  />
                         </DockPanel>
 
@@ -522,7 +516,7 @@
                                Foreground="{StaticResource CraftedModBrush}" />
 
                         <ProgressBar Minimum="0" Maximum="{Binding IncubatorDenominator, FallbackValue=2}"
-                                     Margin="10,0"
+                                     Foreground="#F6BC5D" Background="#232B39" Margin="10,0"
                                      Value="{Binding IncubatorNumerator, FallbackValue=1, Mode=OneTime}"  />
                         <DockPanel Margin="10 0 10 5" LastChildFill="True">
 
