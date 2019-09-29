@@ -134,7 +134,7 @@ namespace Procurement.ViewModel
             if (IsIncubatorProgressVisible)
             {
                 Incubating = $"Incubating {item.IncubatedDetails.Name}";
-                IncubationNumbers =  $"{item.IncubatedDetails.Progress:n0}/{item.IncubatedDetails.Total:n0}";
+                IncubationNumbers =  item.IncubatedDetails.Progress.ToString("0,0", CultureInfo.InvariantCulture) + "/" + item.IncubatedDetails.Total.ToString("0,0", CultureInfo.InvariantCulture);
                 IncubationLevel =  $"Level {item.IncubatedDetails.Level}+ Monster Kills";
                 if (Item.IncubatedDetails.Total > 0)
                 {
