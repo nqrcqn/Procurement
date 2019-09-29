@@ -75,6 +75,7 @@
 
         <Style x:Key="IncubatorSmall" TargetType="Label">
             <Setter Property="FontFamily" Value="../Resources/#Fontin SmallCaps" />
+            <Setter Property="FontStyle" Value="Italic" />
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
             <Setter Property="RenderTransform">
                 <Setter.Value>
