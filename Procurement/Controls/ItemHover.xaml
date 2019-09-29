@@ -89,7 +89,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ItemLevel,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -143,7 +142,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateProperties,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -181,7 +179,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SecondaryDescriptionText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -212,7 +209,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateEnchantMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -242,7 +238,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateImplicitMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -388,7 +383,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -410,7 +404,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding IsDivinationCard,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -441,7 +434,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateMicrotransactions,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -479,7 +471,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ProphecyText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -501,7 +492,6 @@
                     <Border Margin="0 0 0 5"
                             BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ProphecyDifficultyText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
