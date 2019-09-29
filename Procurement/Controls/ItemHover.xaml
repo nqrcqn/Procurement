@@ -50,10 +50,10 @@
                                     <Rectangle.Fill>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                           <GradientStop Color="#FF4B260D" Offset="0.00" />
-                                          <GradientStop Color="#FFF6BB5C" Offset="0.45" />
-                                          <GradientStop Color="#FFEAE7A9" Offset="0.45" />
-                                          <GradientStop Color="#FFEAE7A9" Offset="0.55" />
-                                          <GradientStop Color="#FFC9A153" Offset="0.55" />
+                                          <GradientStop Color="#FFF6BB5C" Offset="0.40" />
+                                          <GradientStop Color="#FFEAE7A9" Offset="0.40" />
+                                          <GradientStop Color="#FFEAE7A9" Offset="0.60" />
+                                          <GradientStop Color="#FFC9A153" Offset="0.60" />
                                           <GradientStop Color="#FF270904" Offset="1.00" />
                                         </LinearGradientBrush>
                                     </Rectangle.Fill>
