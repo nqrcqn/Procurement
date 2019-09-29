@@ -69,9 +69,6 @@
 
                     <!--
                       KNOWN ISSUES:
-                        - Different dividers between different parts of text are not styled differently.  Instead, the
-                          type of item determines what color the dividers will be.  Examples include: gems,
-                          prophecies, and normal/magic/rare/unique items.
                         - Some sections, under some conditions, have extra space before or between lines.
                     -->
 
