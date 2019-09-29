@@ -30,7 +30,7 @@ namespace Procurement.View
             else if (item.Rarity == Rarity.Magic)
                 color = "443470";
             else
-                color = "808080";
+                color = "52463A";
 
             return new LinearGradientBrush()
             {
