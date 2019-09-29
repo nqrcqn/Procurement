@@ -54,6 +54,16 @@
             </Setter>
         </Style>
 
+        <Style x:Key="IncubatorSmall" TargetType="Label">
+            <Setter Property="FontFamily" Value="../Resources/#Fontin SmallCaps" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="0.82" ScaleY="0.82" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -511,11 +521,7 @@
                                                  ConverterParameter=CollapseWhenFalse}">
                         <DockPanel Margin="10 0 10 5">
                             <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding ExperienceDenominator, FallbackValue=2}" Foreground="White" />
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps" Content="/"
-                                   Foreground="White" />
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding ExperienceNumerator, FallbackValue=1}" Foreground="White" />
+                                   Content="{Binding ExperienceNumbers, FallbackValue='1/2'}" Foreground="White" />
                             <ProgressBar Style="{StaticResource ExperienceBarStyle}"
                                          Value="{Binding LevelExperienceProgress, FallbackValue=0.5, Mode=OneTime}"  />
                         </DockPanel>
@@ -536,16 +542,12 @@
                                      Value="{Binding IncubatorProgress, FallbackValue=0.5, Mode=OneTime}"  />
                         <DockPanel Margin="10 0 10 5" LastChildFill="True">
 
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding IncubatorNumerator, FallbackValue=1}" Foreground="White" />
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps" Content="/"
-                                   Foreground="White" />
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding IncubatorDenominator, FallbackValue=2}" Foreground="White" />
-                            
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"
+                            <Label DockPanel.Dock="Left" Style="{StaticResource IncubatorSmall}" 
+                                   Content="{Binding IncubationNumbers, FallbackValue='1/2'}" Foreground="White" />
+
+                            <Label DockPanel.Dock="Right" Style="{StaticResource IncubatorSmall}" HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Content="{Binding IncubationLevel}" Foreground="Gray" />
-                            
+
                         </DockPanel>
                     </StackPanel>
 
