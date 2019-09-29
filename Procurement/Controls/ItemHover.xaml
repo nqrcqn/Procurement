@@ -516,7 +516,7 @@
                                                  ConverterParameter=CollapseWhenFalse}" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
-                                Padding="10 0 10 5"
+                                Margin="10 0 10 5"
                                 Visibility="{Binding IsGemProgressVisible,
                                                  Converter={StaticResource VisibilityConverter},
                                                  ConverterParameter=CollapseWhenFalse}">
@@ -539,7 +539,7 @@
                         <Label HorizontalAlignment="Center" FontFamily="../Resources/#Fontin SmallCaps" Content="{Binding Incubating, StringFormat=Incubating {}, FallbackValue='Incubating Some Item'}"
                                Foreground="{StaticResource CraftedModBrush}" />
 
-                        <ProgressBar Style="{StaticResource ExperienceBarStyle}" Margin="10,0"
+                        <ProgressBar Style="{StaticResource ExperienceBarStyle}"
                                      Value="{Binding IncubatorProgress, FallbackValue=0.5, Mode=OneTime}"  />
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 0 10 5">
