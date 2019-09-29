@@ -44,13 +44,13 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ProgressBar">
-                        <Border BorderThickness="1" Background="#232B39" CornerRadius="2" Padding="1">
-                            <Border.BorderBrush>
+                        <Border BorderBrush="#262A32" BorderThickness="1" CornerRadius="2">
+                            <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                     <GradientStop Color="#FF333B4A" Offset="0.0" />
                                     <GradientStop Color="#FF11161E" Offset="1.0" />
                                 </LinearGradientBrush>
-                            </Border.BorderBrush>
+                            </Border.Background>
                             <Grid x:Name="PART_Track">
                                 <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left">
                                     <Rectangle.Fill>
