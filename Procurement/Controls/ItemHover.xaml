@@ -507,8 +507,8 @@
                                    Foreground="White" />
                             <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
                                    Content="{Binding ExperienceNumerator, FallbackValue=1}" Foreground="White" />
-                            <ProgressBar Style="{StaticResource ExperienceBarStyle}"
-                                         Value="{Binding LevelExperienceProgress, FallbackValue=0.5}"  />
+                            <ProgressBar Minimum="0" Maximum="{Binding ExperienceDenominator, FallbackValue=2}"
+                                         Value="{Binding ExperienceNumerator, FallbackValue=1}"  />
                         </DockPanel>
 
                         <Border Margin="0 0 0 5"
