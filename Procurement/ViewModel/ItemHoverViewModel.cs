@@ -129,13 +129,13 @@ namespace Procurement.ViewModel
             if (gem != null)
             {
                 LevelExperienceProgress = gem.LevelExperienceProgress;
-                ExperienceNumbers =  $"{gem.ExperienceNumerator}/{gem.ExperienceDenominator}";
+                ExperienceNumbers = $"{gem.ExperienceNumerator:n0}/{gem.ExperienceDenominator:n0}";
             }
 
             if (IsIncubatorProgressVisible)
             {
                 Incubating = $"Incubating {item.IncubatedDetails.Name}";
-                IncubationNumbers =  item.IncubatedDetails.Progress.ToString("n0", new CultureInfo("en-US")) + "/" + item.IncubatedDetails.Total.ToString("n0", new CultureInfo("en-US"));
+                IncubationNumbers = $"{item.IncubatedDetails.Progress:n0}/{item.IncubatedDetails.Total:n0}";
                 IncubationLevel =  $"Level {item.IncubatedDetails.Level}+ Monster Kills";
                 if (Item.IncubatedDetails.Total > 0)
                 {
