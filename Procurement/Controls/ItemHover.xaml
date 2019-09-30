@@ -18,19 +18,7 @@
         <v:DivinationCardToFormattedRunConverter x:Key="dc" />
         <v:ItemFlavourTextToFormattedRunConverter x:Key="fc" />
         <v:VisibilityConverter x:Key="bc" />
-
-        <LinearGradientBrush x:Key="SeperatorBrush" StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Offset="0.25" Color="#00808080" />
-            <GradientStop Offset="0.50" Color="#FF808080" />
-            <GradientStop Offset="0.75" Color="#00808080" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="ProphecySeperatorBrush" StartPoint="0,0" EndPoint="1,0">
-            <GradientStop Offset="0.25" Color="#00808080" />
-            <GradientStop Offset="0.50" Color="#881672" />
-            <GradientStop Offset="0.75" Color="#00808080" />
-        </LinearGradientBrush>
-
+        <v:ItemToSeparatorBrushConverter x:Key="sc" />
 
         <Style TargetType="{x:Type Paragraph}">
             <Setter Property="Margin" Value="0" />
@@ -51,10 +39,49 @@
         <Style x:Key="ExperienceBarStyle" TargetType="ProgressBar">
             <Setter Property="Minimum" Value="0" />
             <Setter Property="Maximum" Value="1" />
-            <Setter Property="Margin" Value="2" />
-            <Setter Property="BorderBrush" Value="LightGray" />
-            <Setter Property="Foreground" Value="DarkGoldenrod" />
-            <Setter Property="Height" Value="6" />
+            <Setter Property="Height" Value="10" />
+            <Setter Property="Width" Value="212" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Border BorderBrush="#262A32" BorderThickness="1" CornerRadius="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#FF333B4A" Offset="0.0" />
+                                    <GradientStop Color="#FF11161E" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid x:Name="PART_Track">
+                                <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                          <GradientStop Color="#FF4B260D" Offset="0.00" />
+                                          <GradientStop Color="#FF4B260D" Offset="0.14" />
+                                          <GradientStop Color="#FFF6BB5C" Offset="0.36" />
+                                          <GradientStop Color="#FFEAE7A9" Offset="0.36" />
+                                          <GradientStop Color="#FFEAE7A9" Offset="0.50" />
+                                          <GradientStop Color="#FFC9A153" Offset="0.50" />
+                                          <GradientStop Color="#FF270904" Offset="0.86" />
+                                          <GradientStop Color="#FF270904" Offset="1.00" />
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="IncubatorSmall" TargetType="Label">
+            <Setter Property="FontFamily" Value="../Resources/#Fontin SmallCaps" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </UserControl.Resources>
@@ -81,9 +108,6 @@
 
                     <!--
                       KNOWN ISSUES:
-                        - Different dividers between different parts of text are not styled differently.  Instead, the
-                          type of item determines what color the dividers will be.  Examples include: gems,
-                          prophecies, and normal/magic/rare/unique items.
                         - Some sections, under some conditions, have extra space before or between lines.
                     -->
 
@@ -102,9 +126,8 @@
                                ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ItemLevel,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -156,9 +179,8 @@
                     </ItemsControl>
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateProperties,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -173,7 +195,7 @@
                                                                 ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
                             Visibility="{Binding SeparateRequirements,
                                                  Converter={StaticResource VisibilityConverter},
@@ -194,9 +216,8 @@
                                                     ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SecondaryDescriptionText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -225,9 +246,8 @@
                     </ItemsControl>
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateEnchantMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -255,9 +275,8 @@
                     </ItemsControl>
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateImplicitMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -401,9 +420,8 @@
                                                     ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateMods,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -418,9 +436,8 @@
                                                                 ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding IsDivinationCard,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -449,9 +466,8 @@
                     </ItemsControl>
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding SeparateMicrotransactions,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -466,7 +482,7 @@
                                                                 ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource SeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
                             Visibility="{Binding SeparateFlavourText,
                                                  Converter={StaticResource VisibilityConverter},
@@ -487,9 +503,8 @@
                                                     ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource ProphecySeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ProphecyText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
@@ -509,32 +524,28 @@
                                                     ConverterParameter=CollapseWhenFalse}" />
 
                     <Border Margin="0 0 0 5"
-                            BorderBrush="{StaticResource ProphecySeperatorBrush}"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
                             BorderThickness="1"
-                            Opacity="0.7"
                             Visibility="{Binding ProphecyDifficultyText,
                                                  Converter={StaticResource bc},
                                                  ConverterParameter=CollapseWhenFalse}" />
 
-                    <StackPanel Orientation="Vertical"
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 5"
                                 Visibility="{Binding IsGemProgressVisible,
                                                  Converter={StaticResource VisibilityConverter},
                                                  ConverterParameter=CollapseWhenFalse}">
-                        <DockPanel Margin="10 0 10 5">
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding ExperienceDenominator, FallbackValue=2}" Foreground="White" />
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps" Content="/"
-                                   Foreground="White" />
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding ExperienceNumerator, FallbackValue=1}" Foreground="White" />
-                            <ProgressBar Style="{StaticResource ExperienceBarStyle}"
-                                         Value="{Binding LevelExperienceProgress, FallbackValue=0.5}"  />
-                        </DockPanel>
-
-                        <Border Margin="0 0 0 5"
-                                BorderBrush="{StaticResource SeperatorBrush}"
-                                BorderThickness="1" />
+                        <ProgressBar Style="{StaticResource ExperienceBarStyle}"
+                                     Value="{Binding LevelExperienceProgress, FallbackValue=0.5, Mode=OneTime}"  />
+                        <Label FontFamily="../Resources/#Fontin SmallCaps"
+                               Content="{Binding ExperienceNumbers}" Foreground="White" />
                     </StackPanel>
+
+                    <Border Margin="0 0 0 5"
+                            BorderBrush="{Binding Item, Converter={StaticResource sc}}"
+                            BorderThickness="1"
+                            Visibility="{Binding IsGemProgressVisible,
+                                                 Converter={StaticResource bc},
+                                                 ConverterParameter=CollapseWhenFalse}" />
 
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center"
                                 Visibility="{Binding IsIncubatorProgressVisible,
@@ -542,22 +553,14 @@
                                                  ConverterParameter=CollapseWhenFalse}">
                         <Label HorizontalAlignment="Center" FontFamily="../Resources/#Fontin SmallCaps" Content="{Binding Incubating, StringFormat=Incubating {}, FallbackValue='Incubating Some Item'}"
                                Foreground="{StaticResource CraftedModBrush}" />
-
-                        <ProgressBar Style="{StaticResource ExperienceBarStyle}" Margin="10,0"
+                        <ProgressBar Style="{StaticResource ExperienceBarStyle}"
                                      Value="{Binding IncubatorProgress, FallbackValue=0.5, Mode=OneTime}"  />
-                        <DockPanel Margin="10 0 10 5" LastChildFill="True">
-
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding IncubatorNumerator, FallbackValue=1}" Foreground="White" />
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps" Content="/"
-                                   Foreground="White" />
-                            <Label DockPanel.Dock="Left" FontFamily="../Resources/#Fontin SmallCaps"
-                                   Content="{Binding IncubatorDenominator, FallbackValue=2}" Foreground="White" />
-                            
-                            <Label DockPanel.Dock="Right" FontFamily="../Resources/#Fontin SmallCaps" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Style="{StaticResource IncubatorSmall}" 
+                                   Content="{Binding IncubationNumbers}" Foreground="White" />
+                            <Label Style="{StaticResource IncubatorSmall}"
                                    Content="{Binding IncubationLevel}" Foreground="Gray" />
-                            
-                        </DockPanel>
+                        </StackPanel>
                     </StackPanel>
 
                     <TextBlock Width="{Binding Path=ActualWidth,

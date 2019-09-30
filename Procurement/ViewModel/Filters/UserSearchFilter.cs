@@ -196,8 +196,10 @@ namespace Procurement.ViewModel.Filters
             {
                 List<string> inctext = new List<string>();
 
-                inctext.Add(item.IncubatedDetails.Progress.ToString());
-                inctext.Add(item.IncubatedDetails.Total.ToString());
+                inctext.Add($"{item.IncubatedDetails.Progress}");
+                inctext.Add($"{item.IncubatedDetails.Total}");
+                inctext.Add($"{item.IncubatedDetails.Progress:n0}");
+                inctext.Add($"{item.IncubatedDetails.Total:n0}");
                 inctext.Add($"Incubating {item.IncubatedDetails.Name}");
                 inctext.Add($"Level {item.IncubatedDetails.Level}+ Monster Kills");
 
@@ -335,12 +337,14 @@ namespace Procurement.ViewModel.Filters
 
                 if (gem.HasExperience)
                 {
-                    text = gem.ExperienceNumerator.ToString();
-                    if (text.Contains(word))
-                        goto End;
+                    List<string> exptext = new List<string>();
 
-                    text = gem.ExperienceDenominator.ToString();
-                    if (text.Contains(word))
+                    exptext.Add($"{gem.ExperienceNumerator}");
+                    exptext.Add($"{gem.ExperienceDenominator}");
+                    exptext.Add($"{gem.ExperienceNumerator:n0}");
+                    exptext.Add($"{gem.ExperienceDenominator:n0}");
+
+                    if (exptext.Any(x => x.ToLowerInvariant().Contains(word)))
                         goto End;
                 }
             }
@@ -372,23 +376,51 @@ namespace Procurement.ViewModel.Filters
 
             if (!string.IsNullOrEmpty(item.Id) && Settings.Buyouts.ContainsKey(item.Id))
             {
-                text = "priced";
-                if (text.Contains(word))
+                var itemInfo = Settings.Buyouts[item.Id];
+
+                List<string> pricetext = new List<string>();
+
+                pricetext.Add(itemInfo.Buyout);
+                pricetext.Add(itemInfo.CurrentOffer);
+                pricetext.Add(itemInfo.Price);
+                pricetext.Add(itemInfo.Notes);
+
+                if (pricetext.Any(x => x.ToLowerInvariant().Contains(word)))
                     goto End;
 
-                string price = Settings.Buyouts[item.Id].Buyout;
-
-                if (string.IsNullOrEmpty(price))
-                    price = Settings.Buyouts[item.Id].Price;
+                if (!string.IsNullOrEmpty(itemInfo.Buyout) || !string.IsNullOrEmpty(itemInfo.Price))
+                {
+                    text = "priced";
+                    if (text.Contains(word))
+                    goto End;
+                }
                 else
+                {
+                    text = "unpriced";
+                    if (text.StartsWith(word))
+                        goto End;
+                }
+
+                if (!string.IsNullOrEmpty(itemInfo.Buyout))
                 {
                     text = "buyout";
                     if (text.Contains(word))
                     goto End;
                 }
 
-                if (price.Contains(word))
+                if (!string.IsNullOrEmpty(itemInfo.CurrentOffer))
+                {
+                    text = "offer";
+                    if (text.Contains(word))
                     goto End;
+                }
+
+                if (!string.IsNullOrEmpty(itemInfo.Notes))
+                {
+                    text = "notes";
+                    if (text.Contains(word))
+                    goto End;
+                }
             }
             else if (!(item is QuestItem) && !(item is Decoration))
             {
