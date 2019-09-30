@@ -14,7 +14,7 @@ namespace Procurement.View
         {
             var item = value as Item;
 
-            if (item.Rarity == item.Rarity)
+            if (item.Rarity == Rarity.Relic)
             {
                 return new LinearGradientBrush()
                 {
