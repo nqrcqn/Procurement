@@ -57,7 +57,8 @@ namespace Procurement.View
                 GradientStops = new GradientStopCollection()
                 {
                     new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.3),
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.5),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.4),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.6),
                     new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.7)
                 }
             };
