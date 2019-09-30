@@ -22,11 +22,11 @@ namespace Procurement.View
                     EndPoint = new Point(1, 0),
                     GradientStops = new GradientStopCollection()
                     {
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#004F3D07"), 0.3),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF4F3D07"), 0.4),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF506B3F"), 0.5),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF142F51"), 0.6),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#00142F51"), 0.7)
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#004F3D07"), 0.30),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF4F3D07"), 0.45),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF506B3F"), 0.50),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF142F51"), 0.55),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#00142F51"), 0.70)
                     }
                 };
             }
@@ -56,10 +56,10 @@ namespace Procurement.View
                 EndPoint = new Point(1, 0),
                 GradientStops = new GradientStopCollection()
                 {
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.3),
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.4),
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.6),
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.7)
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.30),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.45),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.55),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.70)
                 }
             };
         }
