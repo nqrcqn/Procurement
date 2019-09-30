@@ -22,11 +22,11 @@ namespace Procurement.View
                     EndPoint = new Point(1, 0),
                     GradientStops = new GradientStopCollection()
                     {
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#004F3D07"), 0.250),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#804F3D07"), 0.375),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF506B3F"), 0.500),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#80142F51"), 0.625),
-                        new GradientStop((Color)ColorConverter.ConvertFromString("#00142F51"), 0.750)
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#004F3D07"), 0.30),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF4F3D07"), 0.40),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF506B3F"), 0.50),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF142F51"), 0.60),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#00142F51"), 0.70)
                     }
                 };
             }
@@ -56,9 +56,9 @@ namespace Procurement.View
                 EndPoint = new Point(1, 0),
                 GradientStops = new GradientStopCollection()
                 {
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.25),
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.30),
                     new GradientStop((Color)ColorConverter.ConvertFromString("#FF" + color), 0.50),
-                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.75)
+                    new GradientStop((Color)ColorConverter.ConvertFromString("#00" + color), 0.70)
                 }
             };
         }
