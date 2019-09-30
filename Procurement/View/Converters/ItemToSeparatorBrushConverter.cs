@@ -13,6 +13,24 @@ namespace Procurement.View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var item = value as Item;
+
+            if (item.Rarity == Rarity.Relic)
+            {
+                return new LinearGradientBrush()
+                {
+                    StartPoint = new Point(0, 0),
+                    EndPoint = new Point(1, 0),
+                    GradientStops = new GradientStopCollection()
+                    {
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#004F3D07"), 0.250),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF4F3D07"), 0.375),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF506B3F"), 0.500),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#FF142F51"), 0.625),
+                        new GradientStop((Color)ColorConverter.ConvertFromString("#00142F51"), 0.750)
+                    }
+                };
+            }
+
             string color;
 
             if (item is Gem)
