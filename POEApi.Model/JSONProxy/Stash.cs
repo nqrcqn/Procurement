@@ -18,7 +18,6 @@ namespace POEApi.Model.JSONProxy
         public double Progress { get; set; }
     }
 
-
     public class Requirement
     {
         public string Name { get; set; }
@@ -32,6 +31,15 @@ namespace POEApi.Model.JSONProxy
         public int Level { get; set; }
         public int Progress { get; set; }
         public int Total { get; set; }
+    }
+
+    public class Hybrid
+    {
+        public bool IsVaalGem { get; set; }
+        public string BaseTypeName { get; set; }
+        public List<Property> Properties { get; set; }
+        public List<string> ExplicitMods { get; set; }
+        public string SecDescrText { get; set; }
     }
 
     public class Item
@@ -83,6 +91,7 @@ namespace POEApi.Model.JSONProxy
         public string ProphecyText { get; set; }
         public string ProphecyDiffText { get; set; }
         public bool IsRelic { get; set; }
+        public List<Hybrid> Hybrid { get; set; }
     }
 
     public class Socket
