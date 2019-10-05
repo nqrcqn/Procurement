@@ -75,7 +75,7 @@ namespace POEApi.Model
         public int StackSize { get; set; }
         public int MaxStackSize { get; set; }
         public Rarity Rarity { get; set; }
-        public Hybrid Hybrid { get; set; }
+        public List<Hybrid> Hybrid { get; set; }
 
         public string BackgroundUrl { get; private set; }
 
