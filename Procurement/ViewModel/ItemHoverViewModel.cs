@@ -55,6 +55,9 @@ namespace Procurement.ViewModel
 
         public string ItemLevel { get; set; }
 
+        public List<Hybrid> Hybrid { get; set; }
+        public string GemName { get; set; }
+
         public bool IsGemProgressVisible
         {
             get
@@ -116,7 +119,7 @@ namespace Procurement.ViewModel
             this.FracturedMods = item.FracturedMods;
 
             this.UtilityMods = item.UtilityMods;
-            
+
             SecondaryDescriptionText = item.SecDescrText;
             setTypeSpecificProperties(item);
 
@@ -124,9 +127,16 @@ namespace Procurement.ViewModel
 
             this.IsDivinationCard = gear != null && gear.GearType == GearType.DivinationCard;
 
+            this.Hybrid = item.Hybrid;
+
             var gem = Item as Gem;
             if (gem != null)
             {
+                if (Hybrid.IsVaalGem)
+                    GemName = Hybrid.BaseTypeName;
+                else
+                    GemName = TypeLine;
+
                 LevelExperienceProgress = gem.LevelExperienceProgress;
                 ExperienceNumbers = $"{gem.ExperienceNumerator:n0}/{gem.ExperienceDenominator:n0}";
             }
