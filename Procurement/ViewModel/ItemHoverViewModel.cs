@@ -55,7 +55,11 @@ namespace Procurement.ViewModel
 
         public string ItemLevel { get; set; }
 
+        public bool IsVaalGem { get; set; }
         public string GemName { get; set; }
+        public List<Property> VaalProperties { get; set; }
+        public List<string> VaalExplicitMods { get; set; }
+        public string VaalSecDescrText { get; set; }
 
         public bool IsGemProgressVisible
         {
@@ -129,9 +133,14 @@ namespace Procurement.ViewModel
             var gem = Item as Gem;
             if (gem != null)
             {
-                var hybrid = Item.Hybrid;
-                if (hybrid?.IsVaalGem)
-                    GemName = hybrid.BaseTypeName;
+                if (gem.IsVaalGem)
+                {
+                    IsVaalGem = true;
+                    GemName = gem.VaalBaseTypeName;
+                    VaalProperties = gem.VaalProperties;
+                    VaalExplicitMods = gem.VaalExplicitMods;
+                    VaalSecDescrText = gem.VaalSecDescrText;
+                }
                 else
                     GemName = TypeLine;
 
