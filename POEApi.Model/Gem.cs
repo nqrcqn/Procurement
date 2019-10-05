@@ -39,7 +39,7 @@ namespace POEApi.Model
             
             if (item.Hybrid?.IsVaalGem)
             {
-                IsVaalGem = item.Hybrid.IsVaalGem;
+                IsVaalGem = true;
                 VaalBaseTypeName = item.Hybrid.BaseTypeName;
                 VaalProperties = item.Hybrid.Properties;
                 VaalExplicitMods = item.Hybrid.ExplicitMods;
