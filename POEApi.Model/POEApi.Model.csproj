@@ -63,6 +63,7 @@
     <Compile Include="Fossil.cs" />
     <Compile Include="FullBestiaryOrb.cs" />
     <Compile Include="GemHandler.cs" />
+    <Compile Include="Hybrid.cs" />
     <Compile Include="Interfaces\ILegion.cs" />
     <Compile Include="Incubator.cs" />
     <Compile Include="Interfaces\IBreachCurrency.cs" />
