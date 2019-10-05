@@ -75,6 +75,7 @@ namespace POEApi.Model
         public int StackSize { get; set; }
         public int MaxStackSize { get; set; }
         public Rarity Rarity { get; set; }
+        public Hybrid Hybrid { get; set; }
 
         public string BackgroundUrl { get; private set; }
 
@@ -116,6 +117,7 @@ namespace POEApi.Model
             StackSize = item.StackSize;
             MaxStackSize = item.MaxStackSize;
             IncubatedDetails = item.IncubatedItem;
+            Hybrid = item.Hybrid;
             
             if (item.Requirements != null)
                 Requirements = ProxyMapper.GetRequirements(item.Requirements);
