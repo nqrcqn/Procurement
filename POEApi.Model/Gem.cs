@@ -22,6 +22,12 @@ namespace POEApi.Model
         /// </summary>
         public int ExperienceDenominator { get; set; }
 
+        public bool IsVaalGem { get; set; }
+        public string VaalBaseTypeName { get; set; }
+        public List<Property> VaalProperties { get; set; }
+        public List<string> VaalExplicitMods { get; set; }
+        public string VaalSecDescrText { get; set; }
+
         public Gem(JSONProxy.Item item) : base(item)
         {
             Properties = ProxyMapper.GetProperties(item.Properties);
@@ -30,6 +36,15 @@ namespace POEApi.Model
             Level = getLevel();
 
             ExtractGemExperience(item);
+            
+            if (item.Hybrid?.IsVaalGem)
+            {
+                IsVaalGem = item.Hybrid.IsVaalGem;
+                VaalBaseTypeName = item.Hybrid.BaseTypeName;
+                VaalProperties = item.Hybrid.Properties;
+                VaalExplicitMods = item.Hybrid.ExplicitMods;
+                VaalSecDescrText = item.Hybrid.SecDescrText;
+            }
         }
 
         private void ExtractGemExperience(JSONProxy.Item item)
