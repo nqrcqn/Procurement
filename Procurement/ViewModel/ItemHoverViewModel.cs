@@ -55,7 +55,6 @@ namespace Procurement.ViewModel
 
         public string ItemLevel { get; set; }
 
-        public List<Hybrid> Hybrid { get; set; }
         public string GemName { get; set; }
 
         public bool IsGemProgressVisible
@@ -127,13 +126,12 @@ namespace Procurement.ViewModel
 
             this.IsDivinationCard = gear != null && gear.GearType == GearType.DivinationCard;
 
-            this.Hybrid = item.Hybrid;
-
             var gem = Item as Gem;
             if (gem != null)
             {
-                if (Hybrid.IsVaalGem)
-                    GemName = Hybrid.BaseTypeName;
+                var hybrid = Item.Hybrid;
+                if (hybrid?.IsVaalGem)
+                    GemName = hybrid.BaseTypeName;
                 else
                     GemName = TypeLine;
 
