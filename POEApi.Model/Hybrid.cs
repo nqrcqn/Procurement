@@ -5,7 +5,7 @@ namespace POEApi.Model
     public class Hybrid
     {
         public bool IsVaalGem { get; set; }
-        public List<Property> Properties { get; set; }
+        public List<JSONProxy.Property> Properties { get; set; }
         public List<string> ExplicitMods { get; set; }
         public string SecDescrText { get; set; }
 
