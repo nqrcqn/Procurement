@@ -47,7 +47,7 @@ namespace Procurement.ViewModel
 
         public SolidColorBrush ItemFilterBrush
         {
-            get { return IsItemInFilter ? new SolidColorBrush(Colors.Yellow) 
+            get { return IsItemInFilter ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E7B477")) 
                                         : new SolidColorBrush(Colors.Transparent); }
         }
 
