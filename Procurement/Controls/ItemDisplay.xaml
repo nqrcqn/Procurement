@@ -29,10 +29,10 @@
             <Grid x:Name="MainGrid" Margin="-2">
                 <Image Source="{Binding ItemImage}" Visibility="{Binding IsItemInFilter,
                                                                 Converter={StaticResource bc},
-                                                                ConverterParameter=CollapseWhenFalse}}" />
+                                                                ConverterParameter=CollapseWhenFalse}" />
                 <Image Source="{Binding ItemImage}" Visibility="{Binding IsItemInFilter,
                                                                 Converter={StaticResource bc},
-                                                                ConverterParameter=CollapseWhenTrue}}"
+                                                                ConverterParameter=CollapseWhenTrue}"
                                                     Opacity="0.5" />
                 <Grid Style="{StaticResource OpaqueBackgroundStyle}" />
                 <Grid Visibility="{Binding HasSpecialBackground}" Background="{Binding SpecialBackground}" />
