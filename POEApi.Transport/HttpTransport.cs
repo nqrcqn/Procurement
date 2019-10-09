@@ -115,7 +115,7 @@ namespace POEApi.Transport
             catch (AggregateException ex) when (ex.InnerException is CloudFlareClearanceException)
             {
                 // After all retries, clearance still failed.
-                throw new Exception("Cloud flare clearance failed, please wait one minute and try again", ex);
+                throw new Exception("Cloudflare clearance failed, please wait one minute and try again", ex);
             }
             catch (AggregateException ex) when (ex.InnerException is TaskCanceledException)
             {
@@ -290,7 +290,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
                     true, data.ToString());
 
-                if (response.ResponseUri.ToString() == UpdateShopURL)
+                if (response.Address.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
@@ -324,7 +324,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(BumpShopURL, threadID),
                     true, data.ToString());
 
-                if (response.ResponseUri.ToString() == BumpShopURL)
+                if (response.Address.ToString().StartsWith(string.Format(BumpShopURL, threadID)))
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
