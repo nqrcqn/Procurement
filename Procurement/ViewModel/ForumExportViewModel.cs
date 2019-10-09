@@ -162,16 +162,22 @@ namespace Procurement.ViewModel
             if (!text.Contains("[url=https://github.com/Stickymaddness/Procurement/][img]http://i.imgur.com/ZHBMImo.png[/img][/url]"))
                 text += Environment.NewLine + Environment.NewLine + "[url=https://github.com/Stickymaddness/Procurement/][img]http://i.imgur.com/ZHBMImo.png[/img][/url]";
 
-
             Task.Factory.StartNew(() =>
-              {
-                  var shopUpdated = ApplicationState.Model.UpdateThread(Settings.ShopSettings[ApplicationState.CurrentLeague].ThreadId, Settings.ShopSettings[ApplicationState.CurrentLeague].ThreadTitle, text);
+                {
+                    try
+                    {
+                        var shopUpdated = ApplicationState.Model.UpdateThread(Settings.ShopSettings[ApplicationState.CurrentLeague].ThreadId, Settings.ShopSettings[ApplicationState.CurrentLeague].ThreadTitle, text);
 
-                  if (shopUpdated)
-                      MessageBox.Show("Shop successfully updated!", "Shop updated", MessageBoxButton.OK, MessageBoxImage.Information);
-                  else
-                      MessageBox.Show("Error updating shop, details logged to debuginfo.log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-              });
+                        if (shopUpdated)
+                            MessageBox.Show("Shop successfully updated!", "Shop updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                        else
+                            MessageBox.Show("Error updating shop, details logged to debuginfo.log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    catch (ForumThreadException ex) when (ex.Message == "Updating the shop has likely failed due to outdated item locations.")
+                    {
+                        MessageBox.Show("Shop couldn't be updated, try refreshing the stash tabs before updating.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                });
         }
 
         private bool settingsValid(bool isUpdate)
