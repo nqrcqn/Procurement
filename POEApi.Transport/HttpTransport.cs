@@ -290,7 +290,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
                     true, data.ToString());
 
-                if (response.ResponseUri == UpdateShopURL)
+                if (response.ResponseUri.ToString() == UpdateShopURL)
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
@@ -324,7 +324,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(BumpShopURL, threadID),
                     true, data.ToString());
 
-                if (response.ResponseUri == BumpShopURL)
+                if (response.ResponseUri.ToString() == BumpShopURL)
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
