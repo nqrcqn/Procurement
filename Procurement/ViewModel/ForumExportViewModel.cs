@@ -173,7 +173,7 @@ namespace Procurement.ViewModel
                         else
                             MessageBox.Show("Error updating shop, details logged to debuginfo.log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    catch (ForumThreadException ex) when (ex.Message.Contains("outdated"))
+                    catch (ForumThreadException)
                     {
                         MessageBox.Show("Shop couldn't be updated, try refreshing the stash tabs before updating.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
