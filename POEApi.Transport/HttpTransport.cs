@@ -290,7 +290,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
                     true, data.ToString());
 
-                if (response.Address.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
+                if (response.ResponseUri.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
@@ -324,7 +324,7 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(BumpShopURL, threadID),
                     true, data.ToString());
 
-                if (response.Address.ToString().StartsWith(string.Format(BumpShopURL, threadID)))
+                if (response.ResponseUri.ToString().StartsWith(string.Format(BumpShopURL, threadID)))
                 {
                     throw new ForumThreadException("Refreshing tabs might solve this issue.");
                 }
