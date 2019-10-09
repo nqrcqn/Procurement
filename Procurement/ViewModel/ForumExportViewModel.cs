@@ -170,12 +170,19 @@ namespace Procurement.ViewModel
 
                         if (shopUpdated)
                             MessageBox.Show("Shop successfully updated!", "Shop updated", MessageBoxButton.OK, MessageBoxImage.Information);
-                        else
-                            MessageBox.Show("Error updating shop, details logged to debuginfo.log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    catch (ForumThreadException)
+                    catch (ForumThreadException ex)
                     {
-                        MessageBox.Show("Shop couldn't be updated, try refreshing the stash tabs before updating.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Logger.Log("Error updating shop thread: " + ex.ToString());
+
+                        if (ex.Message == "Updating the shop has likely failed due to outdated item locations.")
+                        {
+                            MessageBox.Show("Shop couldn't be updated, try refreshing the stash tabs before updating.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error updating shop, details logged to debuginfo.log", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                     }
                 });
         }
