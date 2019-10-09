@@ -7,12 +7,12 @@ namespace POEApi.Infrastructure
         public ForumThreadException()
             : base() { }
 
-        public string message = "";
+        public string errormessage = "";
 
-        public ForumThreadException(string errormessage)
-            : base(errormessage)
+        public ForumThreadException(string message)
+            : base(message)
         {
-            message = errormessage;
+            errormessage = message;
         }
     }
 }
