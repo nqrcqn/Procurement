@@ -274,34 +274,26 @@ namespace POEApi.Transport
 
         public bool UpdateThread(string threadID, string threadTitle, string threadText)
         {
-            try
+            string threadHash = GetThreadHash(string.Format(UpdateShopURL, threadID), HashRegEx);
+            if (string.IsNullOrEmpty(threadHash))
             {
-                string threadHash = GetThreadHash(string.Format(UpdateShopURL, threadID), HashRegEx);
-                if (string.IsNullOrEmpty(threadHash))
-                {
-                    throw new ForumThreadException("Unable to obtain thread hash to update thread.");
-                }
-
-                StringBuilder data = new StringBuilder();
-                data.Append("title=" + Uri.EscapeDataString(threadTitle));
-                data.Append("&content=" + Uri.EscapeDataString(threadText));
-                data.Append("&hash=" + threadHash);
-
-                var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
-                    true, data.ToString());
-
-                if (response.ResponseUri.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
-                {
-                    throw new ForumThreadException("Updating the shop has likely failed due to outdated item locations.");
-                }
-
-                return true;
+                throw new ForumThreadException("Unable to obtain thread hash to update thread.");
             }
-            catch (Exception ex)
+
+            StringBuilder data = new StringBuilder();
+            data.Append("title=" + Uri.EscapeDataString(threadTitle));
+            data.Append("&content=" + Uri.EscapeDataString(threadText));
+            data.Append("&hash=" + threadHash);
+
+            var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
+                true, data.ToString());
+
+            if (response.ResponseUri.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
             {
-                Logger.Log("Error updating shop thread: " + ex.ToString());
-                return false;
+                throw new ForumThreadException("Updating the shop has likely failed due to outdated item locations.");
             }
+
+            return true;
         }
 
         public bool BumpThread(string threadID, string threadTitle)
