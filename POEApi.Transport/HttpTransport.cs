@@ -115,7 +115,7 @@ namespace POEApi.Transport
             catch (AggregateException ex) when (ex.InnerException is CloudFlareClearanceException)
             {
                 // After all retries, clearance still failed.
-                throw new Exception("Cloudflare clearance failed, please wait one minute and try again", ex);
+                throw new Exception("Cloudflare clearance failed, please wait one minute and try again.", ex);
             }
             catch (AggregateException ex) when (ex.InnerException is TaskCanceledException)
             {
@@ -326,7 +326,7 @@ namespace POEApi.Transport
 
                 if (response.ResponseUri.ToString().StartsWith(string.Format(BumpShopURL, threadID)))
                 {
-                    throw new ForumThreadException("Refreshing tabs might solve this issue.");
+                    throw new ForumThreadException("There was an unknown error.");
                 }
 
                 return true;
