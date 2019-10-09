@@ -289,8 +289,11 @@ namespace POEApi.Transport
 
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
                     true, data.ToString());
-                // TODO: Check if response.ResponseUri is for a view-thread URI or an edit-thread URI to determine if
-                // the update request was a success or failure, respectively.
+
+                if (response.ResponseUri == UpdateShopURL)
+                {
+                    throw new ForumThreadException("Refreshing tabs might solve this issue.");
+                }
 
                 return true;
             }
@@ -320,8 +323,11 @@ namespace POEApi.Transport
 
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(BumpShopURL, threadID),
                     true, data.ToString());
-                // TODO: Check if response.ResponseUri is for a view-thread URI or an post-reply URI to determine if
-                // the post request was a success or failure, respectively.
+
+                if (response.ResponseUri == BumpShopURL)
+                {
+                    throw new ForumThreadException("Refreshing tabs might solve this issue.");
+                }
 
                 return true;
             }
