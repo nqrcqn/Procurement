@@ -290,10 +290,9 @@ namespace POEApi.Transport
                 var response = BuildHttpRequestAndGetResponse(HttpMethod.POST, string.Format(UpdateShopURL, threadID),
                     true, data.ToString());
 
-                // Updating the shop has failed, likely due to outdated item locations.
                 if (response.ResponseUri.ToString().StartsWith(string.Format(UpdateShopURL, threadID)))
                 {
-                    throw new ForumThreadException("Refreshing tabs might solve this issue.");
+                    throw new ForumThreadException("Updating the shop has likely failed due to outdated item locations.");
                 }
 
                 return true;
