@@ -172,7 +172,7 @@ namespace Procurement.ViewModel
                     (item.TabItem.Content as UIElement).Visibility = Visibility.Visible;
                 }
             }
-            if ((stashView.tabControl.SelectedItem as UIElement).Visibility == Visibility.Collapsed)
+            if ((stashView.tabControl.SelectedItem as TabItem).Visibility == Visibility.Collapsed)
             {
                 var first = tabsAndContent.Find(w => w.TabItem.Visibility == Visibility.Visible);
                 if (first != null)
@@ -180,7 +180,7 @@ namespace Procurement.ViewModel
             }
 			else
 			{
-			    stashView.tabControl.SelectedItem.BringIntoView();
+			    (stashView.tabControl.SelectedItem as TabItem).BringIntoView();
 			}
         }
 
