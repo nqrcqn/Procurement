@@ -180,7 +180,7 @@ namespace Procurement.ViewModel
             }
 			else
 			{
-			    stashView.tabControl.ScrollIntoView(stashView.tabControl.SelectedItem);
+			    stashView.tabControl.BringIntoView(stashView.tabControl.SelectedItem);
 			}
         }
 
