@@ -267,12 +267,12 @@ namespace Procurement.ViewModel
             if (item.SocketedItems == null || item.SocketedItems.Count == 0)
                 return false;
 
-            return item.SocketedItems.Exists(i => i.Socket == socketIndex && (socket.Attribute == i.Color || socket.Attribute == "G" || i.Color == "G"));
+            return item.SocketedItems.Exists(i => i.Socket == socketIndex && (socket.Attribute == i.Color || socket.Attribute == "G" || i.Color == "G" || socket.Attribute == "A" && i.Color == null));
         }
 
         private SocketableItem getSocketItemAt(Socket socket, int socketIndex, Gear item)
         {
-            return item.SocketedItems.First(i => i.Socket == socketIndex && (socket.Attribute == i.Color || socket.Attribute == "G" || i.Color == "G"));
+            return item.SocketedItems.First(i => i.Socket == socketIndex && (socket.Attribute == i.Color || socket.Attribute == "G" || i.Color == "G" || socket.Attribute == "A" && i.Color == null));
         }
 
         private Image GetSocket(Socket socket, string suffix)
