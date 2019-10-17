@@ -1,4 +1,5 @@
 ﻿using POEApi.Model;
+using System.Linq;
 
 namespace Procurement.ViewModel.Filters.ForumExport
 {
