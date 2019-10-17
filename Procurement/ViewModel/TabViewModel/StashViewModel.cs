@@ -172,9 +172,16 @@ namespace Procurement.ViewModel
                     (item.TabItem.Content as UIElement).Visibility = Visibility.Visible;
                 }
             }
-            var first = tabsAndContent.Find(w => w.TabItem.Visibility == Visibility.Visible);
-            if (first != null)
-                first.TabItem.IsSelected = true;
+            if (selectedTab.Visibility == Visibility.Collapsed)
+            {
+                var first = tabsAndContent.Find(w => w.TabItem.Visibility == Visibility.Visible);
+                if (first != null)
+                    first.TabItem.IsSelected = true;
+            }
+            else
+            {
+                selectedTab.BringIntoView();
+            }
         }
 
         public bool LoggedIn { get { return !ApplicationState.Model.Offline; } }
