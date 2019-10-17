@@ -290,7 +290,7 @@ namespace Procurement.ViewModel
                 case "S":
                     color = "red" + suffix;
                     break;
-                case "false":
+                case "A":
                     color = "abyssal" + suffix;
                     break;
                 default:
