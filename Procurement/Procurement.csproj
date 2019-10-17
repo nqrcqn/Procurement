@@ -212,6 +212,7 @@
     <Compile Include="ViewModel\Filters\ForumExport\SixGreenSockets.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SixLink.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SixRedSockets.cs" />
+    <Compile Include="ViewModel\Filters\ForumExport\SixWhiteSockets.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\SocketColourFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\CorruptedItemFilter.cs" />
     <Compile Include="ViewModel\Filters\ForumExport\UncorruptedItemFilter.cs" />
