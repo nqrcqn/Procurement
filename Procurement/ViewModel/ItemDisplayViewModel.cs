@@ -192,8 +192,8 @@ namespace Procurement.ViewModel
                     else
                     {
                         string suffix = "-socketed";
-                        SocketableItem g = gear.SocketedItems.Find(si => si.Socket == i && (socket.Attribute == si.Color || socket.Attribute == "G" || si.Color == "G" || socket.Attribute == "A" && si.Color == null));
-                        if (g.Color == "G")
+                        SocketableItem g = gear.SocketedItems.Find(si => si.Socket == i && (socket.Attribute == si.Color || socket.Attribute == "G" || si.Color == "G"));
+                        if (g != null && g.Color == "G")
                             suffix += "-white";
 
                         Image img = GetSocket(socket, suffix);
