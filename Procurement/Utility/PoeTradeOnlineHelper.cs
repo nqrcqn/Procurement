@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Timers;
 using System.Windows;
 using System.Linq;
-using System.Net.Http;
+using System.Web.Services.Protocols;
 
 namespace Procurement.Utility
 {
