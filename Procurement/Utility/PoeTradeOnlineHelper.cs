@@ -82,6 +82,7 @@ namespace Procurement.Utility
         {
             using (var client = new WebClient())
             {
+                client.AllowAutoRedirect = false;
                 var data = new NameValueCollection();
                 client.UploadValuesAsync(refreshUri, "POST", data);
                 currentlyOnline = true;
@@ -92,6 +93,7 @@ namespace Procurement.Utility
         {
             using (var client = new WebClient())
             {
+                client.AllowAutoRedirect = false;
                 var offlineUri = new Uri(refreshUri.OriginalString + "/offline");
                 var data = new NameValueCollection();
                 client.UploadValuesAsync(offlineUri, "POST", data);
